@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import Adapter.ViewPagerAdapter;
+import Fragments.AdminPage;
 import Fragments.LoginPage;
 import Fragments.RegisterPage;
 
@@ -25,6 +26,8 @@ public class ViewPagerActivity extends AppCompatActivity {
 
         adapter.LoginPage(new LoginPage(),"Sign In");
         adapter.LoginPage(new RegisterPage(),"Sign up");
+
+        adapter.LoginPage(new AdminPage(),"Admin login");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

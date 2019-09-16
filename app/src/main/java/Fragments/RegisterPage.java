@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class RegisterPage extends Fragment {
     private EditText regemail, regpassword, regfullname, regusername, regphoneno, regaddress, regconfpassword;
     private Button btnSignIn, btnSignUp;
-    private ProgressBar progressBar;
+//    private ProgressBar progressBar;
 
     public RegisterPage() {
 
@@ -44,7 +44,7 @@ public class RegisterPage extends Fragment {
         regconfpassword = view.findViewById(R.id.regconfpassword);
         btnSignIn = view.findViewById(R.id.sign_in_button);
 
-        progressBar = view.findViewById(R.id.progressbar);
+//        progressBar = view.findViewById(R.id.progressbar);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
