@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
 
-import Api.UserApi;
+import Api.Api;
 import Model.LoginResponse;
 import Model.User;
 import Url.Url;
@@ -53,10 +53,10 @@ public class LoginPage extends Fragment {
 
         final String email = etemailLogin.getText().toString();
         final String password = etPasswordLogin.getText().toString();
-        UserApi userApi = Url.getInstance().create(UserApi.class);
+        Api api = Url.getInstance().create(Api.class);
         final User user = new User(email, password);
 
-        Call<LoginResponse> call = userApi.getResponse(user);
+        Call<LoginResponse> call = api.getResponse(user);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {

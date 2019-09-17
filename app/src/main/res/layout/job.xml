@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/ic_background">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_person"/>
+
+        <TextView
+            android:id="@+id/tvjName"
+            style="@style/textStyle"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Job name"/>
+
+        <TextView
+            android:id="@+id/tvjdesc"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tvjName"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Job detail" />
+
+        <TextView
+            android:id="@+id/tvjprice"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tvjdesc"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Charge" />
+
+    </RelativeLayout>
+
+</LinearLayout>
