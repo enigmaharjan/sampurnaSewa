@@ -1,32 +1,17 @@
 package Model;
 
 public class User {
-    private String userid, name, username, password, email, phone, address,imagename;
+    private String userid, name, username, email, password,  address, phone,imagename;
 
-
-    public User(String password, String email) {
-        this.password = password;
-        this.email = email;
-
-    }
-
-    public User(String userid, String name, String username, String imagename, String password, String email, String phone, String address) {
+    public User(String userid, String name, String username, String email, String password, String address, String phone, String imagename) {
         this.userid = userid;
-        this.address = address;
         this.name = name;
         this.username = username;
-        this.password = password;
         this.email = email;
-        this.phone = phone;
-        this.imagename=imagename;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+        this.password = password;
         this.address = address;
+        this.phone = phone;
+        this.imagename = imagename;
     }
 
     public String getUserid() {
@@ -53,14 +38,6 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -69,12 +46,36 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImagename() {
+        return imagename;
+    }
+
+    public void setImagename(String imagename) {
+        this.imagename = imagename;
     }
 }
 
