@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
 
-import Api.UserApi;
+import Api.Api;
 import Model.RegisterResponse;
 import Model.User;
 import Url.Url;
@@ -49,7 +49,7 @@ public class RegisterPage extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!isEmpty()) {
-                    UserApi userApi = Url.getInstance().create(UserApi.class);
+                    Api api = Url.getInstance().create(Api.class);
                     String userid = "10000";
                     String name = regfullname.getText().toString();
                     String username = regusername.getText().toString();
@@ -61,7 +61,7 @@ public class RegisterPage extends Fragment {
 
 
                     User user = new User(userid, name, username, password, email, phone, address, imagename);
-                    Call<RegisterResponse> listCall = userApi.addUsers(user);
+                    Call<RegisterResponse> listCall = api.addUsers(user);
                     listCall.enqueue(new Callback<RegisterResponse>() {
                         @Override
                         public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
