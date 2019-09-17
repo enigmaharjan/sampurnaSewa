@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/ic_background"
     android:orientation="vertical"
     tools:context=".ViewPagerActivity"
     tools:showIn="@layout/activity_view_pager">
@@ -13,7 +13,6 @@
         android:id="@+id/tabId"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#47A847"
         app:tabIndicatorColor="#FF0000"
         app:tabIndicatorHeight="2dp"
         app:tabTextColor="#ffffff">
