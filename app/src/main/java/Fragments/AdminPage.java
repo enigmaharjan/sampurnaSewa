@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sampurnasewaagile.AddJob;
+import com.example.sampurnasewaagile.AdminActivity;
 import com.example.sampurnasewaagile.R;
 
 import Api.Api;
@@ -66,7 +66,7 @@ public class AdminPage extends Fragment {
                 {
                     if (response.body().isStatus()) {
                         Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(), AddJob.class);
+                        Intent intent = new Intent(getActivity(), AdminActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();

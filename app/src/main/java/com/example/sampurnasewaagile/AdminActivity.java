@@ -8,44 +8,47 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
+import Fragments.AddJobFrag;
+import Fragments.AdminPage;
 import Fragments.HomeFragment;
 import Fragments.ProfileFragment;
+import Fragments.ViewBookFrag;
 import Fragments.ViewBookingFragment;
+import Fragments.ViewFeedbackFrag;
 
-public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
+public class AdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin);
 
 
-        BottomNavigationView botomNav=findViewById(R.id.bottom_navigation);
-        botomNav.setOnNavigationItemSelectedListener(navListener);
+        BottomNavigationView botomNav=findViewById(R.id.bottom_nav);
+        botomNav.setOnNavigationItemSelectedListener(navList);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_cont,
+                new AddJobFrag()).commit();
 
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new
+    private BottomNavigationView.OnNavigationItemSelectedListener navList = new
             BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     Fragment selectedFragment=null;
                     switch (menuItem.getItemId()){
-                        case R.id.nav_home:
-                            selectedFragment=new HomeFragment();
+                        case R.id.nav_newbook:
+                            selectedFragment=new AddJobFrag();
                             break;
-                        case R.id.nav_book:
-                            selectedFragment=new ViewBookingFragment();
+                        case R.id.nav_view:
+                            selectedFragment=new ViewBookFrag();
                             break;
-                        case R.id.nav_profile:
-                            selectedFragment=new ProfileFragment();
+                        case R.id.nav_feedback:
+                            selectedFragment=new ViewFeedbackFrag();
                             break;
 
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_cont,
                             selectedFragment).commit();
 
                     return true;
