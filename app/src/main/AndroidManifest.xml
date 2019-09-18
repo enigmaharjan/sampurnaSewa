@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
 
     <activity android:name=".MainActivity"/>
-    <activity android:name=".AddJob"/>
+        <activity android:name=".AdminActivity"/>
         <activity android:name=".ViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

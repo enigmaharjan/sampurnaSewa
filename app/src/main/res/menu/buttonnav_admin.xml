@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_newbook"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Add book"/>
+
+    <item
+        android:id="@+id/nav_view"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:title="View book"/>
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="feedbacks"/>
+
+
+</menu>

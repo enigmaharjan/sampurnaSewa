@@ -13,13 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.sampurnasewaagile.HomeFragment;
 import com.example.sampurnasewaagile.MainActivity;
 import com.example.sampurnasewaagile.R;
 
 import Api.Api;
 import Model.LoginResponse;
-import Model.User;
 import Model.User2;
 import Url.Url;
 import retrofit2.Call;

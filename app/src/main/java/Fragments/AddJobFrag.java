@@ -1,11 +1,16 @@
-package com.example.sampurnasewaagile;
+package Fragments;
+
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.sampurnasewaagile.R;
 
 import Api.Api;
 import Model.Job;
@@ -15,20 +20,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddJob extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class AddJobFrag extends Fragment {
     private EditText jname, jdetail, mincharge;
     private Button add_job;
 
+
+
+    public AddJobFrag() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_job);
-
-        jname = findViewById(R.id.jobname);
-        jdetail = findViewById(R.id.jobdetail);
-        mincharge = findViewById(R.id.minimumcharge);
-        add_job=findViewById(R.id.add_job);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        final View view = inflater.inflate(R.layout.fragment_add_job, container, false);
+        jname = view.findViewById(R.id.jobname);
+        jdetail = view.findViewById(R.id.jobdetail);
+        mincharge = view.findViewById(R.id.minimumcharge);
+        add_job = view.findViewById(R.id.add_job);
         add_job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,18 +59,20 @@ public class AddJob extends AppCompatActivity {
                     public void onResponse(Call<JobResponse> call, Response<JobResponse> response) {
                         JobResponse jobResponse=response.body();
                         if (jobResponse.getMessage().equals("Successfully Registered")){
-                            Toast.makeText(AddJob.this, "Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
                         } else{
-                            Toast.makeText(AddJob.this, "Fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Fail", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<JobResponse> call, Throwable t) {
-                        Toast.makeText(AddJob.this, "Sorry", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Sorry", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
+        return view;
     }
+
 }
