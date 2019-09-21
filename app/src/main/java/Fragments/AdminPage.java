@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -11,9 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.AdminActivity;
 import com.example.sampurnasewaagile.R;
 
-import Api.AdminApi;
+import Api.Api;
 import Model.Admin;
 import Model.LoginResponse;
 import Url.Url;
@@ -53,19 +55,19 @@ public class AdminPage extends Fragment {
 
         final String email = etemailLoginadmin.getText().toString();
         final String password = etPasswordLoginadmin.getText().toString();
-        AdminApi adminApi = Url.getInstance().create(AdminApi.class);
+        Api api = Url.getInstance().create(Api.class);
 
         Admin admin= new Admin(email,password);
 
-        Call<LoginResponse> call  = adminApi.getAdmin(admin);
+        Call<LoginResponse> call  = api.getAdmin(admin);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-              {
+                {
                     if (response.body().isStatus()) {
                         Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(getActivity(), AdminDashboard.class);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getActivity(), AdminActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
@@ -93,6 +95,3 @@ public class AdminPage extends Fragment {
         return false;
     }
 }
-
-
-

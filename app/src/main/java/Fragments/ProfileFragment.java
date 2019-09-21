@@ -1,4 +1,4 @@
-package com.example.sampurnasewaagile;
+package Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ViewBookingFragment extends Fragment {
+import com.example.sampurnasewaagile.R;
+
+public class ProfileFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate((R.layout.fragment_viewbooking),container,false);
+        return inflater.inflate((R.layout.fragment_profile),container,false);
+
     }
 }

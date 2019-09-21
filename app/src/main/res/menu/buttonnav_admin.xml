@@ -2,16 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_newbook"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home"/>
+        android:title="Add book"/>
 
     <item
-        android:id="@+id/nav_book"
+        android:id="@+id/nav_view"
         android:icon="@drawable/ic_book_black_24dp"
-        android:title="My Bookings"/>
+        android:title="View book"/>
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/nav_feedback"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title="Profile"/>
+        android:title="feedbacks"/>
+
+
 </menu>

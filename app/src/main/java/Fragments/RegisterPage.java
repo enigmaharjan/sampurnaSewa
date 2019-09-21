@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
@@ -43,8 +42,6 @@ public class RegisterPage extends Fragment {
         regpassword = view.findViewById(R.id.regpassword);
         regconfpassword = view.findViewById(R.id.regconfpassword);
         btnSignIn = view.findViewById(R.id.sign_in_button);
-
-//        progressBar = view.findViewById(R.id.progressbar);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

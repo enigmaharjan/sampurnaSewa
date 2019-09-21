@@ -1,6 +1,7 @@
 package Fragments;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.MainActivity;
 import com.example.sampurnasewaagile.R;
 
 import Api.Api;
@@ -68,8 +70,8 @@ public class LoginPage extends Fragment {
                     editor.putString("userid", id);
                     editor.commit();
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(getActivity(), Dashboard.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "Invalid id or pw", Toast.LENGTH_SHORT).show();
                 }
