@@ -74,5 +74,5 @@ public class AddJobFrag extends Fragment {
         });
         return view;
     }
-
 }
+

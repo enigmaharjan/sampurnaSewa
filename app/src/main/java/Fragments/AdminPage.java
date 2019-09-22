@@ -95,6 +95,3 @@ public class AdminPage extends Fragment {
         return false;
     }
 }
-
-
-

@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sampurnasewaagile.Book;
 import com.example.sampurnasewaagile.R;
 
 import java.util.List;
@@ -38,6 +40,15 @@ public class JobDetailAdapter extends RecyclerView.Adapter<JobDetailAdapter.Deta
         detailsViewHolder.tvjdesc.setText(job.getJobdetail());
         detailsViewHolder.tvjprice.setText(job.getMinimumcharge());
 
+        detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext, Book.class);
+                intent.putExtra("jobname", job.getJobname());
+                mcontext.startActivity(intent);
+
+            }
+        });
     }
 
     @Override

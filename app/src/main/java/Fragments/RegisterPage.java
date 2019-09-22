@@ -42,7 +42,7 @@ public class RegisterPage extends Fragment {
         regpassword = view.findViewById(R.id.regpasswordlog);
         regconfpassword = view.findViewById(R.id.regconfpasswordlog);
         btnSignIn = view.findViewById(R.id.sign_in_button);
-
+      
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
