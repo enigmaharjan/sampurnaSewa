@@ -18,7 +18,7 @@ import com.example.sampurnasewaagile.R;
 
 import Api.Api;
 import Model.LoginResponse;
-import Model.User;
+import Model.User2;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,9 +56,9 @@ public class LoginPage extends Fragment {
         final String email = etemailLogin.getText().toString();
         final String password = etPasswordLogin.getText().toString();
         Api api = Url.getInstance().create(Api.class);
-        final User user = new User(email, password);
+        final User2 user2 = new User2(email, password);
 
-        Call<LoginResponse> call = api.getResponse(user);
+        Call<LoginResponse> call = api.getResponse(user2);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {

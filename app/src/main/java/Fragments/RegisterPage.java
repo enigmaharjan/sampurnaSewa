@@ -34,14 +34,15 @@ public class RegisterPage extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_register_page, container, false);
         btnSignUp = view.findViewById(R.id.sign_up_button);
-        regemail = view.findViewById(R.id.regemail);
-        regaddress = view.findViewById(R.id.regaddress);
-        regfullname = view.findViewById(R.id.regfullname);
-        regphoneno = view.findViewById(R.id.regphoneno);
-        regusername = view.findViewById(R.id.regusername);
-        regpassword = view.findViewById(R.id.regpassword);
-        regconfpassword = view.findViewById(R.id.regconfpassword);
+        regemail = view.findViewById(R.id.regemaillog);
+        regaddress = view.findViewById(R.id.regaddresslog);
+        regfullname = view.findViewById(R.id.regfullnamelog);
+        regphoneno = view.findViewById(R.id.regphonenolog);
+        regusername = view.findViewById(R.id.regusernamelog);
+        regpassword = view.findViewById(R.id.regpasswordlog);
+        regconfpassword = view.findViewById(R.id.regconfpasswordlog);
         btnSignIn = view.findViewById(R.id.sign_in_button);
+      
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,14 +51,15 @@ public class RegisterPage extends Fragment {
                     String userid = "10000";
                     String name = regfullname.getText().toString();
                     String username = regusername.getText().toString();
-                    String password = regpassword.getText().toString();
                     String email = regemail.getText().toString();
-                    String phone = regphoneno.getText().toString();
+
+                    String password = regpassword.getText().toString();
+
                     String address = regaddress.getText().toString();
-                    String imagename = " name";
+                    String phone = regphoneno.getText().toString();
+                    String imagename = "no image";
 
-
-                    User user = new User(userid, name, username, password, email, phone, address, imagename);
+                    User user = new User(userid, name, username,  email, password, address,phone, imagename);
                     Call<RegisterResponse> listCall = api.addUsers(user);
                     listCall.enqueue(new Callback<RegisterResponse>() {
                         @Override

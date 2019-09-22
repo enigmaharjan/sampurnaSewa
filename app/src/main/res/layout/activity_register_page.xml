@@ -32,7 +32,7 @@
                 android:src="@drawable/logo" />
 
             <EditText
-                android:id="@+id/regfullname"
+                android:id="@+id/regfullnamelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -51,7 +51,7 @@
                 android:background="#f9d7db"
                 />
             <EditText
-                android:id="@+id/regusername"
+                android:id="@+id/regusernamelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -71,7 +71,7 @@
                 />
 
             <EditText
-                android:id="@+id/regemail"
+                android:id="@+id/regemaillog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -91,7 +91,7 @@
                 />
 
             <EditText
-                android:id="@+id/regaddress"
+                android:id="@+id/regaddresslog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -111,7 +111,7 @@
                 />
 
             <EditText
-                android:id="@+id/regphoneno"
+                android:id="@+id/regphonenolog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
@@ -131,7 +131,7 @@
                 />
 
             <EditText
-                android:id="@+id/regpassword"
+                android:id="@+id/regpasswordlog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -150,7 +150,7 @@
                 android:background="#f9d7db"
                 />
             <EditText
-                android:id="@+id/regconfpassword"
+                android:id="@+id/regconfpasswordlog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

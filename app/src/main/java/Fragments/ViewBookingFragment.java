@@ -31,12 +31,12 @@ import retrofit2.Retrofit;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ViewBookingFragment extends Fragment {
-    private RecyclerView recyclerView;
-
+    private RecyclerView recyclerView
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         final View view= inflater.inflate((R.layout.fragment_viewbooking),container,false);
 
         recyclerView = view.findViewById(R.id.recyclerViewmybook);

@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".Book"></activity>
-        <activity android:name=".MainActivity"/>
         <activity android:name=".AdminActivity"/>
         <activity android:name=".ViewPagerActivity">
             <intent-filter>
