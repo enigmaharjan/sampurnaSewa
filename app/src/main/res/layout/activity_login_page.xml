@@ -30,62 +30,50 @@
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/logo"
                 />
-            <EditText
-                android:id="@+id/etemailLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:background="@android:color/transparent"
-                android:drawablePadding="8dp"
-                android:padding="8dp"
-                android:hint="Email"
-                android:text="abc"
-                android:textColorHint="#fff"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_person"
-                android:layout_marginTop="70dp"
-                />
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/mobileImageView"
+                    android:src="@drawable/ic_email"
+                    style="@style/profileDetailsImage" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db"
-                />
-            <EditText
-                android:id="@+id/etPasswordLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:drawablePadding="12dp"
-                android:padding="8dp"
-                android:hint="Password"
-                android:text="abc"
-                android:textColorHint="#fff"
-                android:maxLines="1"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_lock"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db"/>
+                <EditText
+                    android:id="@+id/etemailLogin"
+                    android:hint="Email"
+                    android:textSize="25dp"
+                    android:layout_toRightOf="@id/mobileImageView"
+                    style="@style/profileDetailsMiniText" />
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+            <RelativeLayout style="@style/profileDetailsLayout">
+                <ImageView
+                    android:id="@+id/passImageView"
+                    android:src="@drawable/ic_lock"
+                    style="@style/profileDetailsImage" />
+
+                <EditText
+                    android:id="@+id/etPasswordLogin"
+                    android:hint="Password"
+                    android:textSize="25dp"
+                    android:inputType="textPassword"
+                    android:layout_toRightOf="@id/passImageView"
+                    style="@style/profileDetailsMiniText" />
+            </RelativeLayout>
+            <View style="@style/proifleDetailsView" />
 
             <Button
                 android:id="@+id/btnLogin"
+                android:background="@drawable/ic_button_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_button"
-                android:text="Log in"
-                android:textColor="#00695C"
+                android:text="Login"
+                android:layout_gravity="center"
+                android:textSize="18sp"
                 android:textAllCaps="false"
-                android:padding="16dp"
-                android:clickable="true"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:layout_marginTop="24dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
                 />
 
             <TextView

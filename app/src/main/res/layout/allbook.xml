@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
-    android:layout_margin="20dp"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/ic_background">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
 
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tvalljobName"
+        style="@style/textStyle"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="#000AFF"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/imgProfile"
+        android:hint="Job Type"/>
+
+    <TextView
+        android:id="@+id/tvalljdate"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvalljobName"
+        android:layout_below="@+id/tvalljobName"
+        android:hint="Date" />
+
+    <TextView
+        android:id="@+id/tvalljtime"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvalljdate"
+        android:layout_below="@+id/tvalljdate"
+        android:hint="Time" />
+
+    <TextView
+        android:id="@+id/tvalljprob"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvalljtime"
+        android:layout_below="@+id/tvalljtime"
+        android:hint="Problem" />
+
+    <TextView
+        android:id="@+id/tvallUserid"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvalljprob"
+        android:layout_below="@+id/tvalljprob"
+        android:hint="Userid" />
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/tvallUserid"
+        android:layout_marginTop="10dp"
+        />
 
-        <TextView
-            android:id="@+id/tvalljobName"
-            style="@style/textStyle"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="Job Type"/>
-
-        <TextView
-            android:id="@+id/tvalljdate"
-            style="@style/textStyle"
-            android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tvalljobName"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="Date" />
-
-        <TextView
-            android:id="@+id/tvalljtime"
-            style="@style/textStyle"
-            android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tvalljdate"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="Time" />
-
-        <TextView
-            android:id="@+id/tvalljprob"
-            style="@style/textStyle"
-            android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tvalljtime"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="Problem" />
-
-        <TextView
-            android:id="@+id/tvallUserid"
-            style="@style/textStyle"
-            android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tvalljprob"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="User" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

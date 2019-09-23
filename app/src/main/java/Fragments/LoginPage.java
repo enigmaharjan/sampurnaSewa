@@ -29,7 +29,6 @@ import static android.content.Context.MODE_PRIVATE;
 public class LoginPage extends Fragment {
     private EditText etemailLogin,etPasswordLogin;
     private Button btnLogin;
-    private String a;
 
 
     @Override
