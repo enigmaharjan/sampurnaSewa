@@ -1,6 +1,4 @@
 package Api;
-import android.content.SharedPreferences;
-
 import java.util.List;
 
 import Model.Admin;
@@ -16,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Api {
     @POST("api/v1/authuser")
@@ -24,8 +23,6 @@ public interface Api {
     @GET("api/v1/job")
     Call<List<Job>> getJobs();
 
-    @GET("api/v1/booking")
-    Call<List<Booking>> getbook();
 
     @POST("api/v1/booking")
     Call<BookingResponse> addbook(@Body Booking booking);
@@ -39,7 +36,6 @@ public interface Api {
     @POST("api/v1/job")
     Call<JobResponse> addjob(@Body Job job);
 
-    @GET("api/v1/job")
-    Call<List<Job>> getJobs();
-
+    @GET("api/v1/booked/{userid}")
+    Call<List<Booking>> getbook(@Path("userid") int userid);
 }

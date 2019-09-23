@@ -52,7 +52,6 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
         TextView tvjobName, tvjdate,tvjtime,tvjprob;
-        String userid;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,9 +59,6 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
             tvjdate = itemView.findViewById(R.id.tvjdate);
             tvjtime = itemView.findViewById(R.id.tvjtime);
             tvjprob = itemView.findViewById(R.id.tvjprob);
-            SharedPreferences sharedPreferences = mcontext.getSharedPreferences("User", MODE_PRIVATE);
-            String uid = sharedPreferences.getString("userid", "");
-            userid=uid;
 
         }
 

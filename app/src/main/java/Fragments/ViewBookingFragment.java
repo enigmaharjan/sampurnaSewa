@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.Book;
 import com.example.sampurnasewaagile.R;
+import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
 import java.util.List;
 
 import Adapter.JobDetailAdapter;
@@ -31,7 +34,7 @@ import retrofit2.Retrofit;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ViewBookingFragment extends Fragment {
-    private RecyclerView recyclerView
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -52,7 +55,9 @@ public class ViewBookingFragment extends Fragment {
         Retrofit retrofit= Url.getInstance();
         Api api = retrofit.create(Api.class);
 
-        Call<List<Booking>> listCall=api.getbook();
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
+        final String userid = sharedPreferences.getString("userid", "");
+        Call<List<Booking>> listCall= api.getbook(Integer.parseInt(userid));
         listCall.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
@@ -64,7 +69,7 @@ public class ViewBookingFragment extends Fragment {
                 }
             @Override
             public void onFailure(Call<List<Booking>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Failed"+t, Toast.LENGTH_LONG).show();
 
             }
         });

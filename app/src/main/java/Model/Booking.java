@@ -3,6 +3,7 @@ package Model;
 public class Booking {
     private String bookid,jobname,jobtime,jobdate,jobproblem,userid;
 
+
     public Booking(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid) {
         this.bookid = bookid;
         this.jobname = jobname;
