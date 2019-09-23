@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Api {
@@ -30,6 +31,9 @@ public interface Api {
     @POST("api/v1/user")
     Call<RegisterResponse> addUsers(@Body User user);
 
+    @PUT("api/v1/user")
+    Call<RegisterResponse> updateuser(@Body User user);
+
     @POST("api/v1/authadmin")
     Call<LoginResponse> getAdmin(@Body Admin admin);
 
@@ -39,6 +43,9 @@ public interface Api {
 
     @GET("api/v1/booked/{userid}")
     Call<List<Booking>> getbook(@Path("userid") String userid);
+
+    @GET("api/v1/user/{userid}")
+    Call<List<User2>> getuser(@Path("userid") String userid);
 
     @GET("api/v1/booking")
     Call<List<Booking>> getallbook();

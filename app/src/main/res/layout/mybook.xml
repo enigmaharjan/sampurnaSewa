@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
-    android:layout_margin="20dp"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/ic_background">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/tvjobName"
             style="@style/textStyle"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="#000AFF"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/imgProfile"
             android:hint="Job Type"/>
@@ -24,32 +22,35 @@
             android:id="@+id/tvjdate"
             style="@style/textStyle"
             android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjobName"
             android:layout_below="@+id/tvjobName"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Date" />
 
         <TextView
             android:id="@+id/tvjtime"
             style="@style/textStyle"
             android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjdate"
             android:layout_below="@+id/tvjdate"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Time" />
 
         <TextView
             android:id="@+id/tvjprob"
             style="@style/textStyle"
             android:maxLines="2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjtime"
             android:layout_below="@+id/tvjtime"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Problem" />
 
-    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/tvjprob"
+        android:layout_marginTop="10dp"
+        />
 
-</LinearLayout>
+    </RelativeLayout>
