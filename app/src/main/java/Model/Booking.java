@@ -1,10 +1,11 @@
 package Model;
 
 public class Booking {
-    private String bookid,jobname,jobtime,jobdate,jobproblem,userid;
+    private String jobname,jobtime,jobdate,jobproblem,userid;
+    private int bookid;
 
 
-    public Booking(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid) {
+    public Booking(int bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid) {
         this.bookid = bookid;
         this.jobname = jobname;
         this.jobtime = jobtime;
@@ -17,11 +18,11 @@ public class Booking {
         this.userid = userid;
     }
 
-    public String getBookid() {
+    public int getBookid() {
         return bookid;
     }
 
-    public void setBookid(String bookid) {
+    public void setBookid(int bookid) {
         this.bookid = bookid;
     }
 

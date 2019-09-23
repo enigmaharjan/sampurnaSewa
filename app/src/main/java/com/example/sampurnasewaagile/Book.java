@@ -82,7 +82,7 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
             @Override
             public void onClick(View v) {
                 Api api = Url.getInstance().create(Api.class);
-                String bookid = "10000000";
+                int bookid = 10000000;
                 String jobname = jobtype.getText().toString();
                 String jobtime = jtime.getText().toString();
                 String jobdate = jdate.getText().toString();

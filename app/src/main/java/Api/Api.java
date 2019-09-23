@@ -36,6 +36,10 @@ public interface Api {
     @POST("api/v1/job")
     Call<JobResponse> addjob(@Body Job job);
 
+
     @GET("api/v1/booked/{userid}")
-    Call<List<Booking>> getbook(@Path("userid") int userid);
+    Call<List<Booking>> getbook(@Path("userid") String userid);
+
+    @GET("api/v1/booking")
+    Call<List<Booking>> getallbook();
 }
