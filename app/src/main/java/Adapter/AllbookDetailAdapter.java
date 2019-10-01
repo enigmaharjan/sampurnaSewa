@@ -33,8 +33,8 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
     public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
         final  Booking booking =bookList.get(i);
         detailsViewHolder.tvjobName.setText(booking.getJobname());
-        detailsViewHolder.tvjdate.setText(booking.getJobtime());
-        detailsViewHolder.tvjtime.setText(booking.getJobdate());
+        detailsViewHolder.tvjdate.setText(booking.getJobdate());
+        detailsViewHolder.tvjtime.setText(booking.getJobtime());
         detailsViewHolder.tvjprob.setText(booking.getJobproblem());
         detailsViewHolder.tvjuser.setText(booking.getUserid());
 

@@ -16,9 +16,11 @@ import com.example.sampurnasewaagile.R;
 import java.util.List;
 
 import Adapter.AllbookDetailAdapter;
+import Adapter.JobDetailAdapteradmin;
 import Adapter.MybookDetailAdapter;
 import Api.Api;
 import Model.Booking;
+import Model.Job;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,18 +62,18 @@ public class ViewBookFrag extends Fragment {
         Retrofit retrofit= Url.getInstance();
         Api api = retrofit.create(Api.class);
 
-        Call<List<Booking>> listCall= api.getallbook();
-        listCall.enqueue(new Callback<List<Booking>>() {
+        Call<List<Job>> listCall= api.getJobs();
+        listCall.enqueue(new Callback<List<Job>>() {
             @Override
-            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 Toast.makeText(getContext(), "load Bookings", Toast.LENGTH_SHORT).show();
-                List<Booking> booking = response.body();
-                AllbookDetailAdapter allbookDetailAdapter = new AllbookDetailAdapter(getActivity(), booking);
+                List<Job> booking = response.body();
+                JobDetailAdapteradmin allbookDetailAdapter = new JobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
             @Override
-            public void onFailure(Call<List<Booking>> call, Throwable t) {
+            public void onFailure(Call<List<Job>> call, Throwable t) {
                 Toast.makeText(getContext(), "Failed"+t, Toast.LENGTH_LONG).show();
 
             }
