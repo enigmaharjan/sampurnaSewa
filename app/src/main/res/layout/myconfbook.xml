@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvjobName"
+        style="@style/textStyle"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="#000AFF"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/imgProfile"
+        android:hint="Job Type"/>
+
+    <LinearLayout
+        android:id="@+id/lindec"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvjobName"
+        android:layout_below="@+id/tvjobName">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Date :" />
+
+        <TextView
+            android:id="@+id/tvjdate"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:hint="Date" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linprice"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/lindec">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Time:" />
+
+        <TextView
+            android:id="@+id/tvjtime"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjName"
+            android:layout_below="@+id/lindec"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linprob"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/linprice">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Prob:" />
+        <TextView
+            android:id="@+id/tvjprob"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjprob"
+            android:layout_below="@+id/linprob"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Problem" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/linprob">
+    <TextView
+        android:id="@+id/btnupt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:textSize="30sp"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/btndel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="Delete"
+        android:textSize="30sp"
+        android:textColor="#FF0000"
+        android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/lin"
+        android:layout_marginTop="10dp"
+        />
+
+    </RelativeLayout>
