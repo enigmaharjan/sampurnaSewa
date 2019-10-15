@@ -52,7 +52,8 @@ public class ViewBookingFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");
-        Call<List<Booking>> listCall= api.getbook(userid);
+        String confirmation="0";
+        Call<List<Booking>> listCall= api.getbook(userid,confirmation);
         listCall.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {

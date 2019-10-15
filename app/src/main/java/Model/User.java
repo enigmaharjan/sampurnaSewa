@@ -14,6 +14,10 @@ public class User {
         this.imagename = imagename;
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public String getUserid() {
         return userid;
     }

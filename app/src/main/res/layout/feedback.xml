@@ -1,6 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/a"
+        style="@style/textStyle"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="#000AFF"
+        android:layout_marginStart="20dp"
+        android:hint="Feedback:"/>
+    <TextView
+        android:id="@+id/tvFeedback"
+        style="@style/textStyle"
+        android:textColor="#000"
+        android:layout_below="@+id/a"
+        android:layout_marginStart="20dp"
+        android:hint="Feedback"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>

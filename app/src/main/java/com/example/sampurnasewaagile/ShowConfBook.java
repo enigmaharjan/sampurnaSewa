@@ -1,7 +1,7 @@
 package com.example.sampurnasewaagile;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -9,17 +9,16 @@ import android.widget.Toast;
 import java.util.List;
 
 import Adapter.AllbookDetailAdapter;
-import Adapter.JobDetailAdapteradmin;
+import Adapter.ConfbookDetailAdapter;
 import Api.Api;
 import Model.Booking;
-import Model.Job;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ShowAllBook extends AppCompatActivity {
+public class ShowConfBook extends AppCompatActivity {
     private RecyclerView recyclerView;
     String jobname;
 
@@ -42,20 +41,21 @@ public class ShowAllBook extends AppCompatActivity {
 
             Retrofit retrofit= Url.getInstance();
             Api api = retrofit.create(Api.class);
-            String confirmation="0";
-            Call<List<Booking>> listCall= api.getallbook(jobname,confirmation);
+            String confirmation="1";
+            String completed="0";
+            Call<List<Booking>> listCall= api.getallbooking(jobname,confirmation,completed);
             listCall.enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    Toast.makeText(ShowAllBook.this, "load Bookings", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowConfBook.this, "load Bookings", Toast.LENGTH_SHORT).show();
                     List<Booking> booking = response.body();
-                    AllbookDetailAdapter allbookDetailAdapter = new AllbookDetailAdapter(ShowAllBook.this, booking);
+                    ConfbookDetailAdapter allbookDetailAdapter = new ConfbookDetailAdapter(ShowConfBook.this, booking);
                     recyclerView.setAdapter(allbookDetailAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(ShowAllBook.this));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(ShowConfBook.this));
                 }
                 @Override
                 public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    Toast.makeText(ShowAllBook.this, "Failed"+t, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ShowConfBook.this, "Failed"+t, Toast.LENGTH_LONG).show();
 
                 }
             });

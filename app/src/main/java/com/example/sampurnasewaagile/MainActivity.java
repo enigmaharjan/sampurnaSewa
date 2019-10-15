@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import Fragments.HomeFragment;
 import Fragments.ProfileFragment;
 import Fragments.ViewBookingFragment;
+import Fragments.ViewUConfBookingFragment;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_book:
                             selectedFragment=new ViewBookingFragment();
+                            break;
+                        case R.id.nav_confbook:
+                            selectedFragment=new ViewUConfBookingFragment();
                             break;
                         case R.id.nav_profile:
                             selectedFragment=new ProfileFragment();

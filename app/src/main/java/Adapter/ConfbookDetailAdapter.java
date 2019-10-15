@@ -16,18 +16,17 @@ import java.util.List;
 
 import Api.Api;
 import Model.Booking;
+import Model.Booking2;
 import Model.BookingResponse;
-import Model.RegisterResponse;
-import Model.User;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdapter.DetailsViewHolder> {
+public class ConfbookDetailAdapter extends RecyclerView.Adapter<ConfbookDetailAdapter.DetailsViewHolder> {
     Context mcontext;
     List<Booking> bookList;
-    public AllbookDetailAdapter(Context mcontext, List<Booking> bookList) {
+    public ConfbookDetailAdapter(Context mcontext, List<Booking> bookList) {
         this.mcontext = mcontext;
         this.bookList = bookList;
     }
@@ -35,7 +34,7 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
     @NonNull
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.allbook, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.confbook, viewGroup, false);
         return new DetailsViewHolder(view);
     }
 
@@ -48,20 +47,20 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
             detailsViewHolder.tvjprob.setText(booking.getJobproblem());
             detailsViewHolder.tvjuser.setText(booking.getUserid());
             final String bid = booking.getBookid();
-            detailsViewHolder.btnconf.setOnClickListener(new View.OnClickListener() {
+        detailsViewHolder.btncompleted.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Api api = Url.getInstance().create(Api.class);
                     String bookid = bid;
-                    String confirmation = "1";
-                    Booking booking1 = new Booking(bookid, confirmation);
-                    Call<BookingResponse> listCall = api.confirmbook(booking1);
+                    String completed = "1";
+                    Booking2 booking2 = new Booking2(bookid, completed);
+                    Call<BookingResponse> listCall = api.completedbook(booking2);
                     listCall.enqueue(new Callback<BookingResponse>() {
                         @Override
                         public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
                             BookingResponse bookingResponse = response.body();
                             if (bookingResponse.getMessage().equals("Success")) {
-                                Toast.makeText(mcontext, "Confirmed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mcontext, "Completed", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                             }
@@ -83,8 +82,7 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
         TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjuser;
-        Button btnconf;
-        String bookid;
+        Button btncompleted;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,7 +91,7 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
             tvjtime = itemView.findViewById(R.id.tvalljtime);
             tvjprob = itemView.findViewById(R.id.tvalljprob);
             tvjuser=itemView.findViewById(R.id.tvallUserid);
-            btnconf=itemView.findViewById(R.id.btnconf);
+            btncompleted=itemView.findViewById(R.id.btncompleted);
         }
 
     }

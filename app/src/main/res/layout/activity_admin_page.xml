@@ -40,6 +40,7 @@
                     android:id="@+id/etemailLoginadmin"
                     android:hint="Email"
                     android:textSize="25dp"
+                    android:text="admin@admin.com"
                     android:layout_toRightOf="@id/mobileImageView"
                     style="@style/profileDetailsMiniText" />
 
@@ -56,6 +57,7 @@
                     android:id="@+id/etPasswordLoginadmin"
                     android:hint="Password"
                     android:textSize="25dp"
+                    android:text="admin"
                     android:inputType="textPassword"
                     android:layout_toRightOf="@id/passImageView"
                     style="@style/profileDetailsMiniText" />

@@ -10,20 +10,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sampurnasewaagile.Book;
 import com.example.sampurnasewaagile.R;
 import com.example.sampurnasewaagile.ShowAllBook;
+import com.example.sampurnasewaagile.ShowCompBook;
+import com.example.sampurnasewaagile.ShowConfBook;
 
 import java.util.List;
 
-import Model.Booking;
 import Model.Job;
 
-public class JobDetailAdapteradmin extends RecyclerView.Adapter<JobDetailAdapteradmin.DetailsViewHolder> {
+public class ConfJobDetailAdapteradmin extends RecyclerView.Adapter<ConfJobDetailAdapteradmin.DetailsViewHolder> {
     Context mcontext;
     List<Job> jobList;
 
-    public JobDetailAdapteradmin(Context mcontext, List<Job> jobList) {
+    public ConfJobDetailAdapteradmin(Context mcontext, List<Job> jobList) {
         this.mcontext = mcontext;
         this.jobList = jobList;
     }
@@ -43,7 +43,7 @@ public class JobDetailAdapteradmin extends RecyclerView.Adapter<JobDetailAdapter
         detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mcontext, ShowAllBook.class);
+                Intent intent=new Intent(mcontext, ShowConfBook.class);
                 intent.putExtra("jobname", job.getJobname());
                 mcontext.startActivity(intent);
 

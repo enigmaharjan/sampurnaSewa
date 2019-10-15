@@ -1,13 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Fragments.ViewFeedbackFrag">
+    tools:context="Fragments.ViewFeedbackFrag"
+    android:background="@drawable/ic_background">
+
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewfeedback"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+</LinearLayout>

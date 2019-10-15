@@ -114,11 +114,25 @@
             android:textSize="20sp"
             android:hint="Userid" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linbtn"
+        style="@style/textStyle"
+        android:gravity="center"
+        android:layout_below="@+id/linuserid">
+    <Button
+        android:id="@+id/btnconf"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Button>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/linuserid"
+        android:layout_below="@+id/linbtn"
         android:layout_marginTop="10dp"
         />
 

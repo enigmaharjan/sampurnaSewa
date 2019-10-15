@@ -88,8 +88,9 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 String jobdate = jdate.getText().toString();
                 String jobproblem = problem.getText().toString();
                 String userid = uid;
-
-                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid);
+                final String confirmation="0";
+                String completed="0";
+                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid, confirmation,completed);
                 Call<BookingResponse> call = api.addbook(booking);
                 call.enqueue(new Callback<BookingResponse>() {
                     @Override

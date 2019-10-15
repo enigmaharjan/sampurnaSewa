@@ -42,8 +42,8 @@ public class ShowAllBook extends AppCompatActivity {
 
             Retrofit retrofit= Url.getInstance();
             Api api = retrofit.create(Api.class);
-
-            Call<List<Booking>> listCall= api.getallbook(jobname);
+            String confirmation="0";
+            Call<List<Booking>> listCall= api.getallbook(jobname,confirmation);
             listCall.enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {

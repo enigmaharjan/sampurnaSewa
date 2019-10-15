@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import Adapter.AllbookDetailAdapter;
+import Adapter.CompbookDetailAdapter;
 import Adapter.ConfbookDetailAdapter;
 import Api.Api;
 import Model.Booking;
@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ShowConfBook extends AppCompatActivity {
+public class ShowCompBook extends AppCompatActivity {
     private RecyclerView recyclerView;
     String jobname;
 
@@ -42,20 +42,20 @@ public class ShowConfBook extends AppCompatActivity {
             Retrofit retrofit= Url.getInstance();
             Api api = retrofit.create(Api.class);
             String confirmation="1";
-            String completed="0";
+            String completed="1";
             Call<List<Booking>> listCall= api.getallbooking(jobname,confirmation,completed);
             listCall.enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    Toast.makeText(ShowConfBook.this, "load Bookings", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowCompBook.this, "load Bookings", Toast.LENGTH_SHORT).show();
                     List<Booking> booking = response.body();
-                    ConfbookDetailAdapter allbookDetailAdapter = new ConfbookDetailAdapter(ShowConfBook.this, booking);
+                    CompbookDetailAdapter allbookDetailAdapter = new CompbookDetailAdapter(ShowCompBook.this, booking);
                     recyclerView.setAdapter(allbookDetailAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(ShowConfBook.this));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(ShowCompBook.this));
                 }
                 @Override
                 public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    Toast.makeText(ShowConfBook.this, "Failed"+t, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ShowCompBook.this, "Failed"+t, Toast.LENGTH_LONG).show();
 
                 }
             });

@@ -17,83 +17,43 @@ import java.util.List;
 import Api.Api;
 import Model.Booking;
 import Model.BookingResponse;
-import Model.RegisterResponse;
-import Model.User;
+import Model.Feedback;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdapter.DetailsViewHolder> {
+public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.DetailsViewHolder> {
     Context mcontext;
-    List<Booking> bookList;
-    public AllbookDetailAdapter(Context mcontext, List<Booking> bookList) {
+    List<Feedback> feedbacks;
+    public FeedbackAdapter(Context mcontext, List<Feedback> feedbacks) {
         this.mcontext = mcontext;
-        this.bookList = bookList;
+        this.feedbacks = feedbacks;
     }
 
     @NonNull
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.allbook, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.feedback, viewGroup, false);
         return new DetailsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
-        final Booking booking = bookList.get(i);
-            detailsViewHolder.tvjobName.setText(booking.getJobname());
-            detailsViewHolder.tvjdate.setText(booking.getJobdate());
-            detailsViewHolder.tvjtime.setText(booking.getJobtime());
-            detailsViewHolder.tvjprob.setText(booking.getJobproblem());
-            detailsViewHolder.tvjuser.setText(booking.getUserid());
-            final String bid = booking.getBookid();
-            detailsViewHolder.btnconf.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Api api = Url.getInstance().create(Api.class);
-                    String bookid = bid;
-                    String confirmation = "1";
-                    Booking booking1 = new Booking(bookid, confirmation);
-                    Call<BookingResponse> listCall = api.confirmbook(booking1);
-                    listCall.enqueue(new Callback<BookingResponse>() {
-                        @Override
-                        public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
-                            BookingResponse bookingResponse = response.body();
-                            if (bookingResponse.getMessage().equals("Success")) {
-                                Toast.makeText(mcontext, "Confirmed", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<BookingResponse> call, Throwable t) {
-                            Toast.makeText(mcontext, "aa" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            });
+        final Feedback feedback = feedbacks.get(i);
+            detailsViewHolder.tvfeedback.setText(feedback.getFeedback());
         }
 
     @Override
     public int getItemCount() {
-        return bookList.size();    }
+        return feedbacks.size();    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjuser;
-        Button btnconf;
-        String bookid;
+        TextView tvfeedback;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvjobName = itemView.findViewById(R.id.tvalljobName);
-            tvjdate = itemView.findViewById(R.id.tvalljdate);
-            tvjtime = itemView.findViewById(R.id.tvalljtime);
-            tvjprob = itemView.findViewById(R.id.tvalljprob);
-            tvjuser=itemView.findViewById(R.id.tvallUserid);
-            btnconf=itemView.findViewById(R.id.btnconf);
+            tvfeedback = itemView.findViewById(R.id.tvFeedback);
         }
 
     }

@@ -118,14 +118,13 @@
         android:id="@+id/linbtn"
         style="@style/textStyle"
         android:gravity="center"
+        android:layout_alignLeft="@+id/lindec"
         android:layout_below="@+id/linuserid">
-    <Button
-        android:id="@+id/btnconf"
-        android:text="Confirm"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btncompleted"
+            android:text="Completed" />
     </LinearLayout>
 
     <View
