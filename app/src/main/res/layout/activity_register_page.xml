@@ -1,180 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_background">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linear"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImage"
-            android:layout_marginTop="30dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_person"
-            android:layout_centerHorizontal="true"
-            android:elevation="1dp"/>
-
-        <ScrollView
-            android:layout_marginTop="40dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/normal"
+                android:textStyle="bold"
+                android:text="Fill up the details"
+                android:includeFontPadding="false"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:textSize="19sp"
+                android:textColor="@color/blackTextColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/normal"
+                android:text="@string/all_fields_with_are_mandatory"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:textColor="@color/colorLightGrey" />
+
+            <!--    profile image    -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_person"
+                android:layout_centerHorizontal="true"
+                android:elevation="1dp" />
+
+            <!--    full name    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_full_name"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/regfullnamelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="textCapWords"
+                android:hint="@string/firstname_lastname"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                <RelativeLayout
-                    style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/nameImgView"
-                        android:src="@drawable/ic_name"
-                        style="@style/profileDetailsImage" />
+            <!--    Username    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_username"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                    <EditText
-                        android:id="@+id/regfullnamelog"
-                        android:hint="Fullname"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/nameImgView"
-                        style="@style/profileDetailsMiniText" />
+            <EditText
+                android:id="@+id/regusernamelog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:hint="username"
+                android:includeFontPadding="false"
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                android:focusable="true" />
 
-                </RelativeLayout>
-                <View style="@style/proifleDetailsView" />
+            <!--    email    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_email"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
+            <EditText
+                android:id="@+id/regemaillog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hint_email"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/nameImageView"
-                        android:src="@drawable/ic_name"
-                        style="@style/profileDetailsImage" />
-                    <EditText
-                        android:id="@+id/regusernamelog"
-                        android:hint="Username"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/nameImageView"
-                        style="@style/profileDetailsMiniText" />
+            <!--    password    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_password"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                </RelativeLayout>
+            <EditText
+                android:id="@+id/regpasswordlog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="textPassword"
+                android:hint="@string/password"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/mobileImageView"
-                        android:src="@drawable/ic_email"
-                        style="@style/profileDetailsImage" />
+            <!--    confirm password    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_confirm_password"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                    <EditText
-                        android:id="@+id/regemaillog"
-                        android:hint="Email"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/mobileImageView"
-                        style="@style/profileDetailsMiniText" />
+            <EditText
+                android:id="@+id/regconfpasswordlog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="textPassword"
+                android:hint="@string/re_enter_password"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                </RelativeLayout>
+            <!--    address    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_address"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/passImageView"
-                        android:src="@drawable/ic_lock"
-                        style="@style/profileDetailsImage" />
+            <EditText
+                android:id="@+id/regaddresslog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="text"
+                android:hint="@string/hint_address"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                    <EditText
-                        android:id="@+id/regpasswordlog"
-                        android:hint="Password"
-                        android:textSize="25dp"
-                        android:inputType="textPassword"
-                        android:layout_toRightOf="@id/passImageView"
-                        style="@style/profileDetailsMiniText" />
-                </RelativeLayout>
+            <!--    contact    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="@string/form_contact"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/cpassImageView"
-                        android:src="@drawable/ic_lock"
-                        style="@style/profileDetailsImage" />
+            <EditText
+                android:id="@+id/regphonenolog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="number"
+                android:hint="98********"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                    <EditText
-                        android:id="@+id/regconfpasswordlog"
-                        android:hint="confirm Password"
-                        android:inputType="textPassword"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/cpassImageView"
-                        style="@style/profileDetailsMiniText" />
-                </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="10dp">
 
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/addImageView"
-                        android:src="@drawable/ic_address"
-                        style="@style/profileDetailsImage" />
-                    <EditText
-                        android:id="@+id/regaddresslog"
-                        android:hint="Address"
-                        android:textSize="25dp"
-                        android:maxLines="2"
-                        android:layout_toRightOf="@id/addImageView"
-                        style="@style/profileDetailsMiniText" />
-
-                </RelativeLayout>
-
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/phImageView"
-                        android:src="@drawable/ic_mobile"
-                        style="@style/profileDetailsImage" />
-
-                    <EditText
-                        android:id="@+id/regphonenolog"
-                        android:hint="Phone no"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/phImageView"
-                        style="@style/profileDetailsMiniText" />
-
-                </RelativeLayout>
-
-                <View style="@style/proifleDetailsView" />
-
-                <Button
+                <TextView
                     android:id="@+id/sign_up_button"
-                    android:background="@drawable/ic_button_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:textSize="18sp"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="10dp"
-                    />
-                <Button
-                    android:id="@+id/sign_in_button"
-                    android:text="already have account, click here"
-                    android:textSize="20sp"
-                    android:textAllCaps="false"
-                    android:layout_marginBottom="40dp"
-                    style="@style/profileDetailsTextMain" />
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/shape_button_fill"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/normal"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
+                <ProgressBar
+                    android:id="@+id/progress_bar_add_emp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="5dp"
+                    android:indeterminate="true"
+                    android:progressDrawable="@drawable/custom_progress_bar"
+                    android:theme="@style/AppTheme.WhiteAccent"
+                    android:visibility="invisible" />
 
+            </RelativeLayout>
 
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/sign_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_account"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/colorLightGrey"
+                android:layout_marginBottom="10dp" />
 
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

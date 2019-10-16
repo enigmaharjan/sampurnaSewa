@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sampurnasewaagile.MainActivity;
@@ -28,7 +29,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class LoginPage extends Fragment {
     private EditText etemailLogin,etPasswordLogin;
-    private Button btnLogin;
+    private TextView btnLogin;
 
 
     @Override

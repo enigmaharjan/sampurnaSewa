@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class AdminPage extends Fragment {
     private EditText etPasswordLoginadmin, etemailLoginadmin;
-    private Button btnLoginadmin;
+    private TextView btnLoginadmin;
     private TextView tvIncorrect;
 
     public AdminPage() {

@@ -12,4 +12,10 @@
     <color name="blackTextColor">#000</color>
     <color name="profileEditTextColor">#707070</color>
 
+    <!--colors for profile-->
+
+    <color name="colorBackground">#ede7f6</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorLightGrey">#8c8c8c</color>
+    <color name="colorLightLightGrey">#998c8c8c</color>
 </resources>

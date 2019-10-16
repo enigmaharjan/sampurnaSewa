@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_marginRight="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"
@@ -77,15 +78,4 @@
             android:layout_toEndOf="@+id/imgProfile"
             android:hint="Charge" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"
-        android:layout_below="@+id/linprice"
-        android:layout_alignLeft="@+id/imgProfile"
-        android:layout_marginTop="10dp"
-        />
-
-
 </RelativeLayout>

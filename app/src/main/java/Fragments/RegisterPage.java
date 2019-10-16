@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 
 public class RegisterPage extends Fragment {
     private EditText regemail, regpassword, regfullname, regusername, regphoneno, regaddress, regconfpassword;
-    private Button btnSignIn, btnSignUp;
+    private TextView btnSignIn, btnSignUp;
 //    private ProgressBar progressBar;
 
     public RegisterPage() {
