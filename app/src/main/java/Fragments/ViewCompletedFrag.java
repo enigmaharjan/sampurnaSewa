@@ -14,6 +14,7 @@ import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
+import Adapter.CompJobDetailAdapteradmin;
 import Adapter.ConfJobDetailAdapteradmin;
 import Api.Api;
 import Model.Job;
@@ -62,7 +63,7 @@ public class ViewCompletedFrag extends Fragment {
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 Toast.makeText(getContext(), "load Completed", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
-                ConfJobDetailAdapteradmin allbookDetailAdapter = new ConfJobDetailAdapteradmin(getActivity(), booking);
+                CompJobDetailAdapteradmin allbookDetailAdapter = new CompJobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
