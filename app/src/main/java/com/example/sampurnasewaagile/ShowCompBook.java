@@ -49,8 +49,8 @@ public class ShowCompBook extends AppCompatActivity {
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
                     Toast.makeText(ShowCompBook.this, "load Bookings", Toast.LENGTH_SHORT).show();
                     List<Booking> booking = response.body();
-                    CompbookDetailAdapter allbookDetailAdapter = new CompbookDetailAdapter(ShowCompBook.this, booking);
-                    recyclerView.setAdapter(allbookDetailAdapter);
+                    CompbookDetailAdapter compbookDetailAdapter = new CompbookDetailAdapter(ShowCompBook.this, booking);
+                    recyclerView.setAdapter(compbookDetailAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(ShowCompBook.this));
                 }
                 @Override

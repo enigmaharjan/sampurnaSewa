@@ -46,34 +46,6 @@ public class CompbookDetailAdapter extends RecyclerView.Adapter<CompbookDetailAd
             detailsViewHolder.tvjtime.setText(booking.getJobtime());
             detailsViewHolder.tvjprob.setText(booking.getJobproblem());
             detailsViewHolder.tvjuser.setText(booking.getUserid());
-//            final String bid = booking.getBookid();
-//        detailsViewHolder.btncompleted.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Api api = Url.getInstance().create(Api.class);
-//                    String bookid = bid;
-//                    String completed = "1";
-//                    Booking2 booking2 = new Booking2(bookid, completed);
-//                    Call<BookingResponse> listCall = api.completedbook(booking2);
-//                    listCall.enqueue(new Callback<BookingResponse>() {
-//                        @Override
-//                        public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
-//                            BookingResponse bookingResponse = response.body();
-//                            if (bookingResponse.getMessage().equals("Success")) {
-//                                Toast.makeText(mcontext, "Completed", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<BookingResponse> call, Throwable t) {
-//                            Toast.makeText(mcontext, "aa" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
-//            });
         }
 
     @Override
@@ -82,7 +54,6 @@ public class CompbookDetailAdapter extends RecyclerView.Adapter<CompbookDetailAd
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
         TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjuser;
-//        Button btncompleted;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,7 +62,6 @@ public class CompbookDetailAdapter extends RecyclerView.Adapter<CompbookDetailAd
             tvjtime = itemView.findViewById(R.id.tvalljtime);
             tvjprob = itemView.findViewById(R.id.tvalljprob);
             tvjuser=itemView.findViewById(R.id.tvallUserid);
-//            btncompleted=itemView.findViewById(R.id.btncompleted);
         }
 
     }
