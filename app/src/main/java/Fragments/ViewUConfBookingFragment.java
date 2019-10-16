@@ -17,6 +17,7 @@ import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
+import Adapter.MyConfbookDetailAdapter;
 import Adapter.MybookDetailAdapter;
 import Api.Api;
 import Model.Booking;
@@ -28,7 +29,7 @@ import retrofit2.Retrofit;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ViewBookingFragment extends Fragment {
+public class ViewUConfBookingFragment extends Fragment {
     private RecyclerView recyclerView;
 
     @Nullable
@@ -40,8 +41,6 @@ public class ViewBookingFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewmybook);
 
         showBook();
-
-
         return view;
 
     }
@@ -52,15 +51,15 @@ public class ViewBookingFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");
-        String confirmation="0";
+        String confirmation="1";
         Call<List<Booking>> listCall= api.getbook(userid,confirmation);
         listCall.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
 
-                Toast.makeText(getContext(), "load Bookings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "My confirmed Bookings", Toast.LENGTH_SHORT).show();
                 List<Booking> booking = response.body();
-                MybookDetailAdapter mybookDetailAdapter = new MybookDetailAdapter(getActivity(), booking);
+                MyConfbookDetailAdapter mybookDetailAdapter = new MyConfbookDetailAdapter(getActivity(), booking);
                 recyclerView.setAdapter(mybookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

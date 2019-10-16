@@ -9,7 +9,15 @@
     <item
         android:id="@+id/nav_view"
         android:icon="@drawable/ic_book_black_24dp"
-        android:title="View book"/>
+        android:title="View book Request"/>
+    <item
+        android:id="@+id/nav_viewconf"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:title="View Pending book"/>
+    <item
+        android:id="@+id/nav_viewcompleted"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:title="View Completed book"/>
     <item
         android:id="@+id/nav_feedback"
         android:icon="@drawable/ic_person_black_24dp"

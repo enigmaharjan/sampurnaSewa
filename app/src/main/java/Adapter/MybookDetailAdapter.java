@@ -10,14 +10,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sampurnasewaagile.Book;
+import com.example.sampurnasewaagile.BookUpdate;
+import com.example.sampurnasewaagile.MainActivity;
 import com.example.sampurnasewaagile.R;
+import com.example.sampurnasewaagile.ShowAllBook;
 
 import java.util.List;
 
+import Api.Api;
+import Fragments.HomeFragment;
 import Model.Booking;
 import Model.Job;
+import Url.Url;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -40,9 +50,43 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
     public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
         final  Booking booking =bookList.get(i);
         detailsViewHolder.tvjobName.setText(booking.getJobname());
-        detailsViewHolder.tvjdate.setText(booking.getJobtime());
-        detailsViewHolder.tvjtime.setText(booking.getJobdate());
+        detailsViewHolder.tvjdate.setText(booking.getJobdate());
+        detailsViewHolder.tvjtime.setText(booking.getJobtime());
         detailsViewHolder.tvjprob.setText(booking.getJobproblem());
+
+        detailsViewHolder.btnupt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext, BookUpdate.class);
+                intent.putExtra("jname", booking.getJobname());
+                intent.putExtra("jdate", booking.getJobdate());
+                intent.putExtra("jtime", booking.getJobtime());
+                intent.putExtra("jprob", booking.getJobproblem());
+                intent.putExtra("bookid", booking.getBookid());
+                mcontext.startActivity(intent);
+            }
+        });
+        detailsViewHolder.btndel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Api api= Url.getInstance().create(Api.class);
+                String bookid=booking.getBookid();
+                Call<Void> call=api.deletebook(bookid);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(mcontext, "deleted", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(mcontext, MainActivity.class);
+                        mcontext.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(mcontext, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
     }
 
@@ -51,7 +95,7 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
         return bookList.size();    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvjobName, tvjdate,tvjtime,tvjprob;
+        TextView tvjobName, tvjdate,tvjtime,tvjprob,btnupt,btndel;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,7 +103,8 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
             tvjdate = itemView.findViewById(R.id.tvjdate);
             tvjtime = itemView.findViewById(R.id.tvjtime);
             tvjprob = itemView.findViewById(R.id.tvjprob);
-
+            btnupt = itemView.findViewById(R.id.btnupt);
+            btndel = itemView.findViewById(R.id.btndel);
         }
 
     }

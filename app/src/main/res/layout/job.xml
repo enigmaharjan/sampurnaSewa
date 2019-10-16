@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_margin="8dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:layout_marginRight="8dp"
     android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -24,35 +22,67 @@
             android:layout_alignTop="@+id/imgProfile"
             android:layout_toRightOf="@+id/imgProfile"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/imgProfile"
             android:hint="Job name"/>
 
+    <LinearLayout
+        android:id="@+id/lindec"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvjName"
+        android:layout_below="@+id/tvjName"
+        android:layout_toEndOf="@+id/imgProfile">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Detail:" />
+
+    <TextView
             android:id="@+id/tvjdesc"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
-            android:layout_alignLeft="@+id/tvjName"
-            android:layout_below="@+id/tvjName"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Job detail" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linprice"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/lindec"
+        android:layout_toEndOf="@+id/imgProfile">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:paddingRight="10dp"
+        android:text="Min Charge:" />
         <TextView
             android:id="@+id/tvjprice"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
             android:layout_alignLeft="@+id/tvjName"
-            android:layout_below="@+id/tvjdesc"
+            android:layout_below="@+id/lindec"
             android:layout_toEndOf="@+id/imgProfile"
             android:hint="Charge" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/tvjprice"
+        android:layout_below="@+id/linprice"
         android:layout_alignLeft="@+id/imgProfile"
         android:layout_marginTop="10dp"
         />

@@ -14,6 +14,8 @@ import Fragments.HomeFragment;
 import Fragments.ProfileFragment;
 import Fragments.ViewBookFrag;
 import Fragments.ViewBookingFragment;
+import Fragments.ViewCompletedFrag;
+import Fragments.ViewConfBookFrag;
 import Fragments.ViewFeedbackFrag;
 
 public class AdminActivity extends AppCompatActivity {
@@ -42,6 +44,12 @@ public class AdminActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_view:
                             selectedFragment=new ViewBookFrag();
+                            break;
+                        case R.id.nav_viewconf:
+                            selectedFragment=new ViewConfBookFrag();
+                            break;
+                        case R.id.nav_viewcompleted:
+                            selectedFragment=new ViewCompletedFrag();
                             break;
                         case R.id.nav_feedback:
                             selectedFragment=new ViewFeedbackFrag();

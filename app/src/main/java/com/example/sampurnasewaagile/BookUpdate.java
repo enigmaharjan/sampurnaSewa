@@ -23,31 +23,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    private TextView jobtype, jtime, jdate, problem;
-    private Button btnbook;
-    String jobname, uid;
+public class BookUpdate extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+    private TextView upttime, uptdate, uptproblem;
+    private Button uptbook;
+    String jobdate, jobtime, jobproblem, bid, jname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book);
-        jobtype = findViewById(R.id.jobtype);
-        jdate = findViewById(R.id.jobdate);
-        jtime = findViewById(R.id.jobtime);
-        problem = findViewById(R.id.problem);
-        btnbook = findViewById(R.id.btnbook);
+        setContentView(R.layout.activity_book_update);
+        upttime = findViewById(R.id.upttime);
+        uptdate = findViewById(R.id.uptdate);
+        uptproblem = findViewById(R.id.uptproblem);
+        uptbook = findViewById(R.id.uptbook);
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
         final String uid = sharedPreferences.getString("userid", "");
-
-
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            jobname = bundle.getString("jobname");
-            jobtype.setText(jobname);
+            jname = (bundle.getString("jname"));
+            jobproblem = (bundle.getString("jprob"));
+            jobdate = (bundle.getString("jdate"));
+            jobtime = (bundle.getString("jtime"));
+            bid = (bundle.getString("bookid"));
         }
 
-        jtime.setOnClickListener(new View.OnClickListener() {
+        upttime.setText(jobtime);
+        uptdate.setText(jobdate);
+        uptproblem.setText(jobproblem);
+
+        upttime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar cal = Calendar.getInstance();
@@ -55,17 +59,17 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 int minute = cal.get(Calendar.MINUTE);
                 final int second = cal.get(Calendar.SECOND);
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(Book.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(BookUpdate.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        jtime.setText(hourOfDay + ":" + minute);
+                        upttime.setText(hourOfDay + ":" + minute);
                     }
                 }, hour, minute, false);
                 timePickerDialog.show();
             }
         });
 
-        jdate.setOnClickListener(new View.OnClickListener() {
+        uptdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -74,41 +78,42 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        Book.this, Book.this, year, month, day);
+                        BookUpdate.this, BookUpdate.this, year, month, day);
                 datePickerDialog.show();
             }
         });
-        btnbook.setOnClickListener(new View.OnClickListener() {
+        uptbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Api api = Url.getInstance().create(Api.class);
-                String bookid = "10000000";
-                String jobname = jobtype.getText().toString();
-                String jobtime = jtime.getText().toString();
-                String jobdate = jdate.getText().toString();
-                String jobproblem = problem.getText().toString();
+                String jobname=jname;
                 String userid = uid;
-                final String confirmation="0";
+                String bookid = bid;
+                String jobtime = upttime.getText().toString();
+                String jobdate = uptdate.getText().toString();
+                String jobproblem = uptproblem.getText().toString();
+                String confirmation="0";
                 String completed="0";
-                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid, confirmation,completed);
-                Call<BookingResponse> call = api.addbook(booking);
+                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid,confirmation,completed);
+                Toast.makeText(BookUpdate.this, "" + bookid, Toast.LENGTH_SHORT).show();
+                Call<BookingResponse> call = api.updatebook(booking);
                 call.enqueue(new Callback<BookingResponse>() {
                     @Override
                     public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
                         BookingResponse bookingResponse = response.body();
                         if (bookingResponse.getMessage().equals("Success")) {
-                            Toast.makeText(Book.this, "Success", Toast.LENGTH_SHORT).show();
-                            Intent intent =new Intent(Book.this,MainActivity.class);
+                            Toast.makeText(BookUpdate.this, "Updated", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(BookUpdate.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(Book.this, "Sorry", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BookUpdate.this, "Sorry failed", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<BookingResponse> call, Throwable t) {
-                        Toast.makeText(Book.this, "fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BookUpdate.this, "failed" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -157,7 +162,8 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 break;
         }
         String date = "" + mon + "," + dayOfMonth + "-" + year;
-        jdate.setText(date);
+        uptdate.setText(date);
     }
 
 }
+

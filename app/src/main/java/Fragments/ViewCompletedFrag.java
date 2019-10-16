@@ -15,9 +15,7 @@ import com.example.sampurnasewaagile.R;
 import java.util.List;
 
 import Adapter.ConfJobDetailAdapteradmin;
-import Adapter.FeedbackAdapter;
 import Api.Api;
-import Model.Feedback;
 import Model.Job;
 import Url.Url;
 import retrofit2.Call;
@@ -28,10 +26,12 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewFeedbackFrag extends Fragment {
+public class ViewCompletedFrag extends Fragment {
     private RecyclerView recyclerView;
 
-    public ViewFeedbackFrag() {
+
+
+    public ViewCompletedFrag() {
         // Required empty public constructor
     }
 
@@ -40,27 +40,34 @@ public class ViewFeedbackFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view= inflater.inflate(R.layout.fragment_view_feedback, container, false);
-        recyclerView = view.findViewById(R.id.recyclerViewfeedback);
-        showallFeed();
-        return view;
-    }
-    private void showallFeed() {
+        final View view= inflater.inflate(R.layout.fragment_view_book, container, false);
 
-        Retrofit retrofit = Url.getInstance();
+        recyclerView = view.findViewById(R.id.recyclerViewallbook);
+
+
+        showallBook();
+
+
+        return view;
+
+}
+    private void showallBook(){
+
+        Retrofit retrofit= Url.getInstance();
         Api api = retrofit.create(Api.class);
-        Call<List<Feedback>> listCall= api.getFeedback();
-        listCall.enqueue(new Callback<List<Feedback>>() {
+
+        Call<List<Job>> listCall= api.getJobs();
+        listCall.enqueue(new Callback<List<Job>>() {
             @Override
-            public void onResponse(Call<List<Feedback>> call, Response<List<Feedback>> response) {
-                Toast.makeText(getContext(), "load Feedback", Toast.LENGTH_SHORT).show();
-                List<Feedback> feedbacks = response.body();
-                FeedbackAdapter feedbackAdapter = new FeedbackAdapter(getActivity(), feedbacks);
-                recyclerView.setAdapter(feedbackAdapter);
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                Toast.makeText(getContext(), "load Completed", Toast.LENGTH_SHORT).show();
+                List<Job> booking = response.body();
+                ConfJobDetailAdapteradmin allbookDetailAdapter = new ConfJobDetailAdapteradmin(getActivity(), booking);
+                recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
             @Override
-            public void onFailure(Call<List<Feedback>> call, Throwable t) {
+            public void onFailure(Call<List<Job>> call, Throwable t) {
                 Toast.makeText(getContext(), "Failed"+t, Toast.LENGTH_LONG).show();
 
             }

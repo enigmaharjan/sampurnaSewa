@@ -6,23 +6,23 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
     android:orientation="vertical">
+
     <TextView
-        android:id="@+id/tvjobName"
+        android:id="@+id/tvalljobName"
         style="@style/textStyle"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#000AFF"
         android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/imgProfile"
         android:hint="Job Type"/>
 
     <LinearLayout
         android:id="@+id/lindec"
         style="@style/textStyle"
         android:maxLines="2"
+        android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:layout_alignLeft="@+id/tvjobName"
-        android:layout_below="@+id/tvjobName">
+        android:layout_below="@+id/tvalljobName">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,13 +34,12 @@
             android:text="Date :" />
 
         <TextView
-            android:id="@+id/tvjdate"
+            android:id="@+id/tvalljdate"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
             android:hint="Date" />
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -61,13 +60,10 @@
             android:text="Time:" />
 
         <TextView
-            android:id="@+id/tvjtime"
+            android:id="@+id/tvalljtime"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
-            android:layout_alignLeft="@+id/tvjName"
-            android:layout_below="@+id/lindec"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Time" />
     </LinearLayout>
 
@@ -88,52 +84,55 @@
             android:paddingRight="10dp"
             android:text="Prob:" />
         <TextView
-            android:id="@+id/tvjprob"
+            android:id="@+id/tvalljprob"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
-            android:layout_alignLeft="@+id/tvjprob"
-            android:layout_below="@+id/linprob"
-            android:layout_toEndOf="@+id/imgProfile"
             android:hint="Problem" />
     </LinearLayout>
+
     <LinearLayout
-        android:id="@+id/lin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/linuserid"
+        style="@style/textStyle"
         android:maxLines="2"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:textSize="20sp"
         android:layout_alignLeft="@+id/lindec"
         android:layout_below="@+id/linprob">
-    <TextView
-        android:id="@+id/btnupt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:textSize="30sp"
-        android:textColor="#FF0000"
-        android:textStyle="bold"
-        android:layout_marginRight="20dp"/>
 
-    <TextView
-        android:id="@+id/btndel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="Delete"
-        android:textSize="30sp"
-        android:textColor="#FF0000"
-        android:textStyle="bold"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Userid:" />
+        <TextView
+            android:id="@+id/tvallUserid"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:hint="Userid" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linbtn"
+        style="@style/textStyle"
+        android:gravity="center"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/linuserid">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btncompleted"
+            android:text="Completed" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/lin"
+        android:layout_below="@+id/linbtn"
         android:layout_marginTop="10dp"
         />
 
-    </RelativeLayout>
+</RelativeLayout>

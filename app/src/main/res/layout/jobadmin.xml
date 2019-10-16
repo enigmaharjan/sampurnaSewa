@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginRight="8dp"
+    android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_person"/>
+
+        <TextView
+            android:id="@+id/tvjNameadmin"
+            style="@style/textStyle"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="#000AFF"
+            android:layout_alignTop="@+id/imgProfile"
+            android:layout_toRightOf="@+id/imgProfile"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:hint="Job name"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/linprice"
+        android:layout_alignLeft="@+id/imgProfile"
+        android:layout_marginTop="10dp"
+        />
+
+
+</RelativeLayout>
