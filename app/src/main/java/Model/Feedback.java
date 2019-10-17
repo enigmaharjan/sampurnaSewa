@@ -1,9 +1,10 @@
 package Model;
 
 public class Feedback {
-    private String feedback;
+    private String bookid,feedback;
 
-    public Feedback(String feedback) {
+    public Feedback(String bookid, String feedback) {
+        this.bookid = bookid;
         this.feedback = feedback;
     }
 
@@ -13,5 +14,13 @@ public class Feedback {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getBookid() {
+        return bookid;
+    }
+
+    public void setBookid(String bookid) {
+        this.bookid = bookid;
     }
 }

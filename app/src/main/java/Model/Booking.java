@@ -1,12 +1,24 @@
 package Model;
 
 public class Booking {
-    private String bookid, jobname,jobtime,jobdate,jobproblem,userid,confirmation,completed;
+    private String bookid, jobname,jobtime,jobdate,jobproblem,userid,confirmation,completed,feedback;
 
 
     public Booking(String bookid, String confirmation) {
         this.bookid = bookid;
         this.confirmation = confirmation;
+    }
+
+    public Booking(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid, String confirmation, String completed, String feedback) {
+        this.bookid = bookid;
+        this.jobname = jobname;
+        this.jobtime = jobtime;
+        this.jobdate = jobdate;
+        this.jobproblem = jobproblem;
+        this.userid = userid;
+        this.confirmation = confirmation;
+        this.completed = completed;
+        this.feedback = feedback;
     }
 
     public Booking(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid, String confirmation, String completed) {
@@ -93,5 +105,13 @@ public class Booking {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

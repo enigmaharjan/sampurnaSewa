@@ -17,17 +17,18 @@ import java.util.List;
 import Api.Api;
 import Model.Booking;
 import Model.BookingResponse;
-import Model.RegisterResponse;
 import Model.User;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
-public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdapter.DetailsViewHolder> {
+public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdminDetailAdapter.DetailsViewHolder> {
     Context mcontext;
     List<Booking> bookList;
-    public AllbookDetailAdapter(Context mcontext, List<Booking> bookList) {
+    String username;
+    public AllbookAdminDetailAdapter(Context mcontext, List<Booking> bookList) {
         this.mcontext = mcontext;
         this.bookList = bookList;
     }
@@ -40,8 +41,28 @@ public class AllbookDetailAdapter extends RecyclerView.Adapter<AllbookDetailAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final DetailsViewHolder detailsViewHolder, int i) {
         final Booking booking = bookList.get(i);
+        Retrofit retrofit = Url.getInstance();
+        String userid = booking.getUserid();
+        Api api = retrofit.create(Api.class);
+        Call<List<User>> listCall = api.getusername(userid);
+        listCall.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                List<User> list = response.body();
+                for (User user : list) {
+                    username= user.getUsername();
+                    Toast.makeText(mcontext, ""+username, Toast.LENGTH_SHORT).show();
+                    detailsViewHolder.tvjuser.setText(username);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
+            }
+        });
             detailsViewHolder.tvjobName.setText(booking.getJobname());
             detailsViewHolder.tvjdate.setText(booking.getJobdate());
             detailsViewHolder.tvjtime.setText(booking.getJobtime());

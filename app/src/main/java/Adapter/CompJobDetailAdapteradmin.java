@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sampurnasewaagile.R;
-import com.example.sampurnasewaagile.ShowCompBook;
-import com.example.sampurnasewaagile.ShowConfBook;
+import com.example.sampurnasewaagile.ShowCompBookAdmin;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class CompJobDetailAdapteradmin extends RecyclerView.Adapter<CompJobDetai
         detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mcontext, ShowCompBook.class);
+                Intent intent=new Intent(mcontext, ShowCompBookAdmin.class);
                 intent.putExtra("jobname", job.getJobname());
                 mcontext.startActivity(intent);
 

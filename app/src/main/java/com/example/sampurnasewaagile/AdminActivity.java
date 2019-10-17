@@ -1,65 +1,82 @@
 package com.example.sampurnasewaagile;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
 
 import Fragments.AddJobFrag;
-import Fragments.AdminPage;
-import Fragments.HomeFragment;
-import Fragments.ProfileFragment;
-import Fragments.ViewBookFrag;
-import Fragments.ViewBookingFragment;
-import Fragments.ViewCompletedFrag;
-import Fragments.ViewConfBookFrag;
+import Fragments.ViewAdminBookFrag;
+import Fragments.ViewAdminCompletedFrag;
+import Fragments.ViewAdminConfBookFrag;
 import Fragments.ViewFeedbackFrag;
+import Fragments.ViewJobFrag;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
+    private DrawerLayout drawerLayout;
+    private TextView tvTitle;
+    private NavigationView nav;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        drawerLayout = findViewById(R.id.drawerLayout);
+        tvTitle = findViewById(R.id.tvTitle);
 
-        BottomNavigationView botomNav=findViewById(R.id.bottom_nav);
-        botomNav.setOnNavigationItemSelectedListener(navList);
+        nav = findViewById(R.id.nav);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_cont,
-                new AddJobFrag()).commit();
+        nav.findViewById(R.id.addJobs).setOnClickListener(this);
+        nav.findViewById(R.id.viewJobs).setOnClickListener(this);
+        nav.findViewById(R.id.viewBook).setOnClickListener(this);
+        nav.findViewById(R.id.viewConfirmed).setOnClickListener(this);
+        nav.findViewById(R.id.viewFeedback).setOnClickListener(this);
+        nav.findViewById(R.id.viewCompleted).setOnClickListener(this);
 
+
+        showFragment(new ViewJobFrag(), "All Jobs");
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navList = new
-            BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment selectedFragment=null;
-                    switch (menuItem.getItemId()){
-                        case R.id.nav_newbook:
-                            selectedFragment=new AddJobFrag();
-                            break;
-                        case R.id.nav_view:
-                            selectedFragment=new ViewBookFrag();
-                            break;
-                        case R.id.nav_viewconf:
-                            selectedFragment=new ViewConfBookFrag();
-                            break;
-                        case R.id.nav_viewcompleted:
-                            selectedFragment=new ViewCompletedFrag();
-                            break;
-                        case R.id.nav_feedback:
-                            selectedFragment=new ViewFeedbackFrag();
-                            break;
 
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_cont,
-                            selectedFragment).commit();
+    public void openDrawer(View view) {
+        drawerLayout.openDrawer(Gravity.START);
+    }
 
-                    return true;
-                }
-            };
+    private void showFragment(Fragment fragment, String title) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+        tvTitle.setText(title);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addJobs:
+                showFragment(new AddJobFrag(), "Add Jobs");
+                break;
+            case R.id.viewJobs:
+                showFragment(new ViewJobFrag(), "View Jobs");
+                break;
+            case R.id.viewBook:
+                showFragment(new ViewAdminBookFrag(), "View Book Request");
+                break;
+            case R.id.viewConfirmed:
+                showFragment(new ViewAdminConfBookFrag(), "View Confirmed Book");
+                break;
+            case  R.id.viewCompleted:
+                showFragment(new ViewAdminCompletedFrag(),"Completed book");
+                break;
+            case R.id.viewFeedback:
+                showFragment(new ViewFeedbackFrag(), "View Feedback");
+                break;
+        }
+        drawerLayout.closeDrawer(Gravity.START);
+    }
 }

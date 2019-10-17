@@ -6,9 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
 
@@ -16,9 +14,6 @@ import java.util.List;
 
 import Api.Api;
 import Model.Booking;
-import Model.Booking2;
-import Model.BookingResponse;
-import Model.Feedback;
 import Model.User;
 import Url.Url;
 import retrofit2.Call;
@@ -26,28 +21,28 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.DetailsViewHolder> {
+public class CompbookAdminDetailAdapter extends RecyclerView.Adapter<CompbookAdminDetailAdapter.DetailsViewHolder> {
     Context mcontext;
-    List<Booking2> booking2s;
+    List<Booking> bookList;
     String username;
 
-    public FeedbackAdapter(Context mcontext, List<Booking2> booking2s) {
+    public CompbookAdminDetailAdapter(Context mcontext, List<Booking> bookList) {
         this.mcontext = mcontext;
-        this.booking2s = booking2s;
+        this.bookList = bookList;
     }
 
     @NonNull
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.feedback, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.compbook, viewGroup, false);
         return new DetailsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final DetailsViewHolder detailsViewHolder, int i) {
-        final Booking2 booking2 = booking2s.get(i);
+        final Booking booking = bookList.get(i);
         Retrofit retrofit = Url.getInstance();
-        String userid = booking2.getUserid();
+        String userid = booking.getUserid();
         Api api = retrofit.create(Api.class);
         Call<List<User>> listCall = api.getusername(userid);
         listCall.enqueue(new Callback<List<User>>() {
@@ -56,7 +51,7 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.Detail
                 List<User> list = response.body();
                 for (User user : list) {
                     username= user.getUsername();
-                    detailsViewHolder.tvunamef.setText(username);
+                    detailsViewHolder.tvjuser.setText(username);
                 }
             }
 
@@ -65,22 +60,27 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.Detail
 
             }
         });
-        detailsViewHolder.tvfeedback.setText(booking2.getFeedback());
-        detailsViewHolder.tvjnamef.setText(booking2.getJobname());
-        }
+        detailsViewHolder.tvjobName.setText(booking.getJobname());
+        detailsViewHolder.tvjdate.setText(booking.getJobdate());
+        detailsViewHolder.tvjtime.setText(booking.getJobtime());
+        detailsViewHolder.tvjprob.setText(booking.getJobproblem());
+    }
 
     @Override
     public int getItemCount() {
-        return booking2s.size();    }
+        return bookList.size();
+    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvfeedback,tvjnamef,tvunamef;
+        TextView tvjobName, tvjdate, tvjtime, tvjprob, tvjuser;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvfeedback = itemView.findViewById(R.id.tvfeed);
-            tvjnamef= itemView.findViewById(R.id.tvjnamef);
-            tvunamef= itemView.findViewById(R.id.tvunamef);
+            tvjobName = itemView.findViewById(R.id.tvalljobName);
+            tvjdate = itemView.findViewById(R.id.tvalljdate);
+            tvjtime = itemView.findViewById(R.id.tvalljtime);
+            tvjprob = itemView.findViewById(R.id.tvalljprob);
+            tvjuser = itemView.findViewById(R.id.tvallUserid);
         }
 
     }

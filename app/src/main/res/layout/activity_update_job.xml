@@ -59,7 +59,7 @@
                 android:textSize="17sp" />
 
             <EditText
-                android:id="@+id/jobname"
+                android:id="@+id/ujobname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -84,7 +84,7 @@
                 android:textSize="17sp" />
 
             <EditText
-                android:id="@+id/jobdetail"
+                android:id="@+id/ujobdetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -110,7 +110,7 @@
                 android:textSize="17sp" />
 
             <EditText
-                android:id="@+id/minimumcharge"
+                android:id="@+id/uminimumcharge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -136,7 +136,7 @@
                 android:textSize="17sp" />
 
             <Spinner
-                android:id="@+id/avail"
+                android:id="@+id/uavail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -150,7 +150,7 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:id="@+id/add_job"
+                android:id="@+id/upt_job"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -163,7 +163,7 @@
                 android:includeFontPadding="false"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="@string/addjob"
+                android:text="@string/uptjob"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:textStyle="bold" />

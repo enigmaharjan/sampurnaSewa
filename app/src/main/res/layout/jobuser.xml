@@ -78,31 +78,4 @@
             android:layout_toEndOf="@+id/imgProfile"
             android:hint="Charge" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linav"
-        style="@style/textStyle"
-        android:maxLines="2"
-        android:textSize="20sp"
-        android:layout_alignLeft="@+id/lindec"
-        android:layout_below="@+id/linprice"
-        android:layout_toEndOf="@+id/imgProfile">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:paddingRight="10dp"
-            android:text="Available:" />
-        <TextView
-            android:id="@+id/tvjavail"
-            style="@style/textStyle"
-            android:maxLines="2"
-            android:textSize="20sp"
-            android:layout_alignLeft="@+id/tvjName"
-            android:layout_toEndOf="@+id/imgProfile"
-            android:hint="Yes/No" />
-    </LinearLayout>
 </RelativeLayout>

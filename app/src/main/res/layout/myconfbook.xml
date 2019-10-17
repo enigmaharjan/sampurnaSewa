@@ -94,7 +94,7 @@
             android:textColor="#000"
             android:textSize="20sp"
             android:paddingRight="10dp"
-            android:text="Prob:   " />
+            android:text="Problem:" />
         <TextView
             android:id="@+id/tvjprob"
             style="@style/textStyle"
@@ -133,6 +133,12 @@
             android:hint="Status" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvj"
+        style="@style/textStyle"
+        android:textSize="5sp"
+        android:hint="Status"
+        android:visibility="invisible"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

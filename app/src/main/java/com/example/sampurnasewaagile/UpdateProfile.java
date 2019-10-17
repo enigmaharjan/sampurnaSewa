@@ -96,7 +96,7 @@ public class UpdateProfile extends AppCompatActivity {
                         RegisterResponse registerResponse = response.body();
                         if (registerResponse.getMessage().equals("success")) {
                             Toast.makeText(UpdateProfile.this, "Success", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(UpdateProfile.this,MainActivity.class);
+                            Intent intent=new Intent(UpdateProfile.this, UserActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(UpdateProfile.this, "sorry", Toast.LENGTH_SHORT).show();

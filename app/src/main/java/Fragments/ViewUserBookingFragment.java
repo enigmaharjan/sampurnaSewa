@@ -28,7 +28,7 @@ import retrofit2.Retrofit;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ViewBookingFragment extends Fragment {
+public class ViewUserBookingFragment extends Fragment {
     private RecyclerView recyclerView;
 
     @Nullable

@@ -1,7 +1,6 @@
 package Fragments;
 
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,11 +14,9 @@ import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
-import Adapter.AllbookDetailAdapter;
-import Adapter.JobDetailAdapteradmin;
-import Adapter.MybookDetailAdapter;
+import Adapter.CompJobDetailAdapteradmin;
+import Adapter.ConfJobDetailAdapteradmin;
 import Api.Api;
-import Model.Booking;
 import Model.Job;
 import Url.Url;
 import retrofit2.Call;
@@ -27,17 +24,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static android.content.Context.MODE_PRIVATE;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewBookFrag extends Fragment {
+public class ViewAdminCompletedFrag extends Fragment {
     private RecyclerView recyclerView;
 
 
 
-    public ViewBookFrag() {
+    public ViewAdminCompletedFrag() {
         // Required empty public constructor
     }
 
@@ -66,9 +61,9 @@ public class ViewBookFrag extends Fragment {
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Bookings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "load Completed", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
-                JobDetailAdapteradmin allbookDetailAdapter = new JobDetailAdapteradmin(getActivity(), booking);
+                CompJobDetailAdapteradmin allbookDetailAdapter = new CompJobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

@@ -14,8 +14,8 @@ import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
-import Adapter.CompJobDetailAdapteradmin;
-import Adapter.ConfJobDetailAdapteradmin;
+import Adapter.JDetailAdapteradmin;
+import Adapter.JobDetailAdapteradmin;
 import Api.Api;
 import Model.Job;
 import Url.Url;
@@ -27,12 +27,11 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewCompletedFrag extends Fragment {
+public class ViewJobFrag extends Fragment {
     private RecyclerView recyclerView;
 
 
-
-    public ViewCompletedFrag() {
+    public ViewJobFrag() {
         // Required empty public constructor
     }
 
@@ -41,35 +40,31 @@ public class ViewCompletedFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view= inflater.inflate(R.layout.fragment_view_book, container, false);
-
-        recyclerView = view.findViewById(R.id.recyclerViewallbook);
-
-
+        final View view = inflater.inflate(R.layout.fragment_view_job, container, false);
+        recyclerView = view.findViewById(R.id.recyclerViewjob);
         showallBook();
-
-
         return view;
+    }
 
-}
-    private void showallBook(){
+    private void showallBook() {
 
-        Retrofit retrofit= Url.getInstance();
+        Retrofit retrofit = Url.getInstance();
         Api api = retrofit.create(Api.class);
 
-        Call<List<Job>> listCall= api.getJobs();
+        Call<List<Job>> listCall = api.getallJobs();
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Jobs", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
-                CompJobDetailAdapteradmin allbookDetailAdapter = new CompJobDetailAdapteradmin(getActivity(), booking);
+                JDetailAdapteradmin allbookDetailAdapter = new JDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
+
             @Override
             public void onFailure(Call<List<Job>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed"+t, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Failed" + t, Toast.LENGTH_LONG).show();
 
             }
         });

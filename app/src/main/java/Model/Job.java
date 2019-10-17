@@ -2,13 +2,37 @@ package Model;
 
 public class Job {
 
-    private String jobname,jobdetail,minimumcharge,jobimage;
+    private String jobname,jobdetail,minimumcharge,jobimage,availability;
+    private String jobid;
 
-    public Job(String jobname, String jobdetail, String minimumcharge, String jobimage) {
+    public Job(String jobid, String jobname, String jobdetail, String minimumcharge, String jobimage, String availability) {
+        this.jobid=jobid;
         this.jobname = jobname;
         this.jobdetail = jobdetail;
         this.minimumcharge = minimumcharge;
         this.jobimage = jobimage;
+        this.availability = availability;
+    }
+
+    public Job(String jobid, String jobname, String jobdetail, String minimumcharge, String availability) {
+        this.jobid = jobid;
+        this.jobname = jobname;
+        this.jobdetail = jobdetail;
+        this.minimumcharge = minimumcharge;
+        this.availability = availability;
+
+    }
+
+    public Job(String jobid) {
+        this.jobid = jobid;
+    }
+
+    public String getJobid() {
+        return jobid;
+    }
+
+    public void setJobid(String jobid) {
+        this.jobid = jobid;
     }
 
     public String getJobname() {
@@ -43,5 +67,11 @@ public class Job {
         this.jobimage = jobimage;
     }
 
+    public String getAvailability() {
+        return availability;
+    }
 
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
 }

@@ -9,7 +9,13 @@
         <item name="android:textColorHint">#000</item>
         <item name="android:textSize">25sp</item>
     </style>
+
     <string name="app_name">SampurnaSewaAgile</string>
+
+    <string-array name="availability">
+        <item>Available</item>
+        <item>Not available</item>
+    </string-array>
 
     <string name="log_in_to_your_account">Log in to your\naccount</string>
     <string name="log_in_to_your_account_admin">Log in to your admin \naccount</string>
@@ -34,10 +40,18 @@
     <string name="re_enter_password">re-enter password</string>
     <string name="hint_address">address</string>
     <string name="already_have_account">Already have account? click <font color="#6200ea">here</font></string>
+    <string name="form_job_name">Job Name <font color="#f1222f">*</font></string>
+    <string name="form_job_detail">Job Detail <font color="#f1222f">*</font></string>
+    <string name="form_minumum">Minimum Charge <font color="#f1222f">*</font></string>
+    <string name="form_available">Availability <font color="#f1222f">*</font></string>
+    <string name="jobname">Jobname</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login_as_admin">Login as Admin</string>
     <string name="sign_up">Sign Up</string>
+    <string name="addjob">Add Job</string>
+    <string name="uptjob">Update Job</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

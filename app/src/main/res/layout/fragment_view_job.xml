@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Fragments.ViewAdminBookFrag">
+    tools:context="Fragments.ViewAdminBookFrag"
+    android:background="@color/colorBackground">
 
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewallbooking"
+        android:id="@+id/recyclerViewjob"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"

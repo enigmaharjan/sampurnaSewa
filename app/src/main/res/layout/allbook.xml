@@ -9,12 +9,20 @@
     app:cardElevation="3dp"
     app:contentPadding="8dp"
     app:cardBackgroundColor="@color/colorBackground">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_marginLeft="20dp"
+        android:id="@+id/aaa">
 
         <TextView
             android:id="@+id/tvalljobName"
@@ -23,41 +31,117 @@
             android:textSize="23sp"
             android:textColor="@color/colorPrimary"
             android:text="Job Type"/>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvalljdate"
+        <LinearLayout
+            android:id="@+id/lindec"
             style="@style/textStyle"
             android:maxLines="2"
-            android:textSize="18sp"
-            android:hint="Date" />
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
+            android:layout_below="@+id/aaa">
 
-        <TextView
-            android:id="@+id/tvalljtime"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Date :" />
+
+            <TextView
+                android:id="@+id/tvalljdate"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Date" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linprice"
             style="@style/textStyle"
             android:maxLines="2"
-            android:textSize="18sp"
-            android:hint="Time" />
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/lindec">
 
-        <TextView
-            android:id="@+id/tvalljprob"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Time:" />
+
+            <TextView
+                android:id="@+id/tvalljtime"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linprob"
             style="@style/textStyle"
             android:maxLines="2"
-            android:textSize="18sp"
-            android:hint="Problem" />
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/linprice">
 
-        <TextView
-            android:id="@+id/tvallUserid"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Problem:" />
+            <TextView
+                android:id="@+id/tvalljprob"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Problem" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linuserid"
             style="@style/textStyle"
             android:maxLines="2"
-            android:textSize="18sp"
-            android:hint="Userid" />
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/linprob">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Booked by:" />
+            <TextView
+                android:id="@+id/tvallUserid"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="username" />
+        </LinearLayout>
+
     <Button
         android:id="@+id/btnconf"
         android:text="Confirm"
         android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
         android:textAllCaps="false"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linuserid">
     </Button>
-    </LinearLayout>
+    </RelativeLayout>
+
+
 </android.support.v7.widget.CardView>

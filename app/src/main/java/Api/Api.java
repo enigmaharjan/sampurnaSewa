@@ -27,8 +27,11 @@ public interface Api {
     @GET("api/v1/job")
     Call<List<Job>> getJobs();
 
-    @GET("api/v1/feedback")
-    Call<List<Feedback>> getFeedback();
+    @GET("api/v1/jobs")
+    Call<List<Job>> getallJobs();
+
+    @GET("api/v1/bookings")
+    Call<List<Booking2>> getFeedback();
 
     @POST("api/v1/booking")
     Call<BookingResponse> addbook(@Body Booking booking);
@@ -36,11 +39,14 @@ public interface Api {
     @POST("api/v1/user")
     Call<RegisterResponse> addUsers(@Body User user);
 
-    @POST("api/v1/feedback")
-    Call<RegisterResponse> addFeedback(@Body Feedback feedback);
+    @PUT("api/v1/booking")
+    Call<RegisterResponse> addFeedback(@Body Feedback feedback1);
 
     @PUT("api/v1/user")
     Call<RegisterResponse> updateuser(@Body User user);
+
+    @PUT("api/v1/job")
+    Call<RegisterResponse> updatejob(@Body Job job);
 
     @PUT("api/v1/booking")
     Call<BookingResponse> updatebook(@Body Booking booking);
@@ -62,6 +68,9 @@ public interface Api {
 
     @GET("api/v1/user/{userid}")
     Call<List<User2>> getuser(@Path("userid") String userid);
+
+    @GET("api/v1/user/{userid}")
+    Call<List<User>> getusername(@Path("userid") String userid);
 
     @GET("api/v1/booking/{jobname}/{confirmation}/{completed}")
     Call<List<Booking>> getallbooking(@Path("jobname") String jobname,@Path("confirmation") String confirmation,@Path("completed") String completed);

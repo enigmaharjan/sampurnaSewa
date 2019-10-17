@@ -73,6 +73,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="5dp"
+                    android:text="abc"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -96,6 +97,7 @@
                     android:fontFamily="@font/normal"
                     android:gravity="center_vertical"
                     android:hint="@string/password"
+                    android:text="abc"
                     android:includeFontPadding="false"
                     android:inputType="textPassword"
                     android:maxLines="1"

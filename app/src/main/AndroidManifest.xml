@@ -16,15 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FeedbackActivity"/>
+        <activity android:name=".UpdateJob"></activity>
+        <activity android:name=".FeedbackActivity" />
         <activity android:name=".BookUpdate" />
-        <activity android:name=".ShowAllBook" />
-        <activity android:name=".ShowConfBook" />
-        <activity android:name=".ShowCompBook" />
+        <activity android:name=".ShowAllBookAdmin" />
+        <activity android:name=".ShowAdminConfBook" />
+        <activity android:name=".ShowCompBookAdmin" />
         <activity android:name=".UpdateProfile" />
         <activity android:name=".Book" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".UserActivity" />
         <activity android:name=".ViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

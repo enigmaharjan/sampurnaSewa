@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sampurnasewaagile.Book;
 import com.example.sampurnasewaagile.R;
-import com.example.sampurnasewaagile.ShowAllBook;
+import com.example.sampurnasewaagile.ShowAllBookAdmin;
 
 import java.util.List;
 
-import Model.Booking;
 import Model.Job;
 
 public class JobDetailAdapteradmin extends RecyclerView.Adapter<JobDetailAdapteradmin.DetailsViewHolder> {
@@ -43,7 +41,7 @@ public class JobDetailAdapteradmin extends RecyclerView.Adapter<JobDetailAdapter
         detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mcontext, ShowAllBook.class);
+                Intent intent=new Intent(mcontext, ShowAllBookAdmin.class);
                 intent.putExtra("jobname", job.getJobname());
                 mcontext.startActivity(intent);
 

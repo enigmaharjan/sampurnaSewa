@@ -92,7 +92,7 @@
             android:textColor="#000"
             android:textSize="20sp"
             android:paddingRight="10dp"
-            android:text="Prob:" />
+            android:text="Problem:" />
         <TextView
             android:id="@+id/tvalljprob"
             style="@style/textStyle"
@@ -116,13 +116,13 @@
             android:textColor="#000"
             android:textSize="20sp"
             android:paddingRight="10dp"
-            android:text="Userid:" />
+            android:text="Booked by:" />
         <TextView
             android:id="@+id/tvallUserid"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
-            android:hint="Userid" />
+            android:hint="username" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linbtn"

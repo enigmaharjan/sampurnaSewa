@@ -14,7 +14,6 @@ import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
-import Adapter.ConfJobDetailAdapteradmin;
 import Adapter.JobDetailAdapteradmin;
 import Api.Api;
 import Model.Job;
@@ -27,12 +26,12 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewConfBookFrag extends Fragment {
+public class ViewAdminBookFrag extends Fragment {
     private RecyclerView recyclerView;
 
 
 
-    public ViewConfBookFrag() {
+    public ViewAdminBookFrag() {
         // Required empty public constructor
     }
 
@@ -61,9 +60,9 @@ public class ViewConfBookFrag extends Fragment {
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Confirmed Book", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "load Bookings", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
-                ConfJobDetailAdapteradmin allbookDetailAdapter = new ConfJobDetailAdapteradmin(getActivity(), booking);
+                JobDetailAdapteradmin allbookDetailAdapter = new JobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

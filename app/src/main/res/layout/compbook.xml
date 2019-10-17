@@ -116,13 +116,13 @@
             android:textColor="#000"
             android:textSize="20sp"
             android:paddingRight="10dp"
-            android:text="Userid:" />
+            android:text="Booked by:" />
         <TextView
             android:id="@+id/tvallUserid"
             style="@style/textStyle"
             android:maxLines="2"
             android:textSize="20sp"
-            android:hint="Userid" />
+            android:hint="Username" />
     </LinearLayout>
 </RelativeLayout>
 </android.support.v7.widget.CardView>

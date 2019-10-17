@@ -90,7 +90,8 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 String userid = uid;
                 final String confirmation="0";
                 String completed="0";
-                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid, confirmation,completed);
+                String feedback="null";
+                Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid, confirmation,completed,feedback);
                 Call<BookingResponse> call = api.addbook(booking);
                 call.enqueue(new Callback<BookingResponse>() {
                     @Override
@@ -98,7 +99,7 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                         BookingResponse bookingResponse = response.body();
                         if (bookingResponse.getMessage().equals("Success")) {
                             Toast.makeText(Book.this, "Success", Toast.LENGTH_SHORT).show();
-                            Intent intent =new Intent(Book.this,MainActivity.class);
+                            Intent intent =new Intent(Book.this, UserActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

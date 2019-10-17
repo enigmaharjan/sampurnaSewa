@@ -19,6 +19,8 @@ import retrofit2.Response;
 public class FeedbackActivity extends AppCompatActivity {
     private EditText etfeedback;
     private Button btnsubmit;
+    String bookid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +28,16 @@ public class FeedbackActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feedback);
         etfeedback=findViewById(R.id.etfeedback);
         btnsubmit=findViewById(R.id.btnsubmit);
-
+        final Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            bookid=(bundle.getString("bookid"));
+        }
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Api api = Url.getInstance().create(Api.class);
                 String feedback = etfeedback.getText().toString();
-                Feedback feedback1=new Feedback(feedback);
+                Feedback feedback1=new Feedback(bookid,feedback);
                 Call<RegisterResponse> call = api.addFeedback(feedback1);
                 call.enqueue(new Callback<RegisterResponse>() {
                     @Override
@@ -40,7 +45,7 @@ public class FeedbackActivity extends AppCompatActivity {
                         RegisterResponse registerResponse=response.body();
                         if (registerResponse.getMessage().equals("Success")){
                             Toast.makeText(FeedbackActivity.this, "Feedback created", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(FeedbackActivity.this,MainActivity.class);
+                            Intent intent=new Intent(FeedbackActivity.this, UserActivity.class);
                             startActivity(intent);
                             finish();
                         }else {

@@ -103,7 +103,7 @@ public class BookUpdate extends AppCompatActivity implements DatePickerDialog.On
                         BookingResponse bookingResponse = response.body();
                         if (bookingResponse.getMessage().equals("Success")) {
                             Toast.makeText(BookUpdate.this, "Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(BookUpdate.this, MainActivity.class);
+                            Intent intent = new Intent(BookUpdate.this, UserActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

@@ -2,34 +2,26 @@ package Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sampurnasewaagile.Book;
 import com.example.sampurnasewaagile.BookUpdate;
-import com.example.sampurnasewaagile.MainActivity;
+import com.example.sampurnasewaagile.UserActivity;
 import com.example.sampurnasewaagile.R;
-import com.example.sampurnasewaagile.ShowAllBook;
 
 import java.util.List;
 
 import Api.Api;
-import Fragments.HomeFragment;
 import Model.Booking;
-import Model.Job;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapter.DetailsViewHolder> {
     Context mcontext;
@@ -76,7 +68,7 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(mcontext, "deleted", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(mcontext, MainActivity.class);
+                        Intent intent=new Intent(mcontext, UserActivity.class);
                         mcontext.startActivity(intent);
                     }
 

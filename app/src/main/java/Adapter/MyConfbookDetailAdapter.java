@@ -8,21 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.sampurnasewaagile.BookUpdate;
 import com.example.sampurnasewaagile.FeedbackActivity;
-import com.example.sampurnasewaagile.MainActivity;
 import com.example.sampurnasewaagile.R;
 
 import java.util.List;
 
-import Api.Api;
 import Model.Booking;
-import Url.Url;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MyConfbookDetailAdapter extends RecyclerView.Adapter<MyConfbookDetailAdapter.DetailsViewHolder> {
     Context mcontext;
@@ -40,23 +32,26 @@ public class MyConfbookDetailAdapter extends RecyclerView.Adapter<MyConfbookDeta
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final DetailsViewHolder detailsViewHolder, int i) {
         final  Booking booking =bookList.get(i);
+        detailsViewHolder.bookid=booking.getBookid();
         detailsViewHolder.tvjobName.setText(booking.getJobname());
         detailsViewHolder.tvjdate.setText(booking.getJobdate());
         detailsViewHolder.tvjtime.setText(booking.getJobtime());
         detailsViewHolder.tvjprob.setText(booking.getJobproblem());
+        detailsViewHolder.tvj.setText(booking.getFeedback());
         if (booking.getCompleted().equals("0")){
             detailsViewHolder.tvjstatus.setText("Pending");
         }else {
             detailsViewHolder.tvjstatus.setText("Completed");
         }
-        if (detailsViewHolder.tvjstatus.getText().equals("Completed")){
+        if (detailsViewHolder.tvjstatus.getText().equals("Completed")&& detailsViewHolder.tvj.getText().equals("null")) {
             detailsViewHolder.btnfeedback.setVisibility(View.VISIBLE);
             detailsViewHolder.btnfeedback.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(mcontext, FeedbackActivity.class);
+                    intent.putExtra("bookid", booking.getBookid());
                     mcontext.startActivity(intent);
                 }
             });
@@ -68,7 +63,8 @@ public class MyConfbookDetailAdapter extends RecyclerView.Adapter<MyConfbookDeta
         return bookList.size();    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjstatus,btnfeedback;
+        TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjstatus,btnfeedback,tvj;
+        String bookid;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +74,7 @@ public class MyConfbookDetailAdapter extends RecyclerView.Adapter<MyConfbookDeta
             tvjprob = itemView.findViewById(R.id.tvjprob);
             tvjstatus = itemView.findViewById(R.id.tvjstatus);
             btnfeedback = itemView.findViewById(R.id.btnfeedback);
+            tvj = itemView.findViewById(R.id.tvj);
         }
 
     }
