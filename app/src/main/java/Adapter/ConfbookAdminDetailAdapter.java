@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
+import com.example.sampurnasewaagile.UpdateProfile;
+import com.example.sampurnasewaagile.ViewProfile;
 
 import java.util.List;
 
@@ -19,6 +22,7 @@ import Model.Booking;
 import Model.Booking2;
 import Model.BookingResponse;
 import Model.User;
+import Model.User2;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +60,7 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                     username= user.getUsername();
                     Toast.makeText(mcontext, ""+username, Toast.LENGTH_SHORT).show();
                     detailsViewHolder.tvjuser.setText(username);
+
                 }
             }
 
@@ -68,7 +73,42 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
             detailsViewHolder.tvjdate.setText(booking.getJobdate());
             detailsViewHolder.tvjtime.setText(booking.getJobtime());
             detailsViewHolder.tvjprob.setText(booking.getJobproblem());
-//            detailsViewHolder.tvjuser.setText(booking.getUserid());
+            detailsViewHolder.tvjuser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Api api = Url.getInstance().create(Api.class);
+                    String userid = booking.getUserid();
+                    Call<List<User2>> userCall = api.getuser(userid);
+                    userCall.enqueue(new Callback<List<User2>>() {
+                        @Override
+                        public void onResponse(Call<List<User2>> call, Response<List<User2>> response) {
+                            List<User2> list =response.body();
+                            for(User2 user2: list){
+                                String name=user2.getName();
+                                String username=user2.getUsername();
+                                String email=user2.getEmail();
+                                String phone=user2.getPhone();
+                                String address=user2.getAddress();
+                                Toast.makeText(mcontext, ""+name, Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(mcontext, ViewProfile.class);
+                                intent.putExtra("name",name);
+                                intent.putExtra("username",username);
+                                intent.putExtra("email",email);
+                                intent.putExtra("phone",phone);
+                                intent.putExtra("address",address);
+                                mcontext.startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<User2>> call, Throwable t) {
+                            Toast.makeText(mcontext, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            });
             final String bid = booking.getBookid();
             detailsViewHolder.btncompleted.setOnClickListener(new View.OnClickListener() {
                 @Override

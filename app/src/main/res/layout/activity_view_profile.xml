@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efedf0">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/profile_bk"/>
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_marginTop="30dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_person"
+            android:layout_centerHorizontal="true"
+            android:elevation="1dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="30dp"
+            android:id="@+id/upunamehead"
+            android:textColor="#FFF"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    style="@style/headerText"
+                    android:text="Account Info"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <RelativeLayout
+                    style="@style/profileDetailsLayout">
+                    <ImageView
+                        android:id="@+id/nameImgView"
+                        android:src="@drawable/ic_name"
+                        style="@style/profileDetailsImage" />
+
+                    <TextView
+                        android:id="@+id/upname"
+                        android:hint="Fullname"
+                        android:textSize="25dp"
+                        android:layout_toRightOf="@id/nameImgView"
+                        style="@style/profileDetailsMiniText" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/profileDetailsLayout">
+                    <ImageView
+                        android:id="@+id/nameImageView"
+                        android:src="@drawable/ic_name"
+                        style="@style/profileDetailsImage" />
+                    <TextView
+                        android:id="@+id/upuname"
+                        android:hint="Username"
+                        android:textSize="25dp"
+                        android:layout_toRightOf="@id/nameImageView"
+                        style="@style/profileDetailsMiniText" />
+
+                </RelativeLayout>
+
+                <View style="@style/proifleDetailsView" />
+                <RelativeLayout style="@style/profileDetailsLayout">
+                    <ImageView
+                        android:id="@+id/mobileImageView"
+                        android:src="@drawable/ic_email"
+                        style="@style/profileDetailsImage" />
+
+                    <TextView
+                        android:id="@+id/upemail"
+                        android:hint="Email"
+                        android:textSize="25dp"
+                        android:layout_toRightOf="@id/mobileImageView"
+                        style="@style/profileDetailsMiniText" />
+
+                </RelativeLayout>
+
+                <View style="@style/proifleDetailsView" />
+                <RelativeLayout style="@style/profileDetailsLayout">
+                    <ImageView
+                        android:id="@+id/addImageView"
+                        android:src="@drawable/ic_address"
+                        style="@style/profileDetailsImage" />
+                    <TextView
+                        android:id="@+id/upaddress"
+                        android:hint="Address"
+                        android:textSize="25dp"
+                        android:maxLines="2"
+                        android:layout_toRightOf="@id/addImageView"
+                        style="@style/profileDetailsMiniText" />
+
+                </RelativeLayout>
+
+                <View style="@style/proifleDetailsView" />
+                <RelativeLayout style="@style/profileDetailsLayout">
+                    <ImageView
+                        android:id="@+id/phImageView"
+                        android:src="@drawable/ic_mobile"
+                        style="@style/profileDetailsImage" />
+
+                    <TextView
+                        android:id="@+id/upphone"
+                        android:hint="Phone no"
+                        android:textSize="25dp"
+                        android:layout_toRightOf="@id/phImageView"
+                        style="@style/profileDetailsMiniText" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>
+

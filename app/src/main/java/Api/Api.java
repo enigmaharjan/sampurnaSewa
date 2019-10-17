@@ -6,18 +6,22 @@ import Model.Booking;
 import Model.Booking2;
 import Model.BookingResponse;
 import Model.Feedback;
+import Model.ImageResponse;
 import Model.Job;
 import Model.JobResponse;
 import Model.LoginResponse;
 import Model.RegisterResponse;
 import Model.User;
 import Model.User2;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface Api {
@@ -80,4 +84,9 @@ public interface Api {
 
     @HTTP(method = "DELETE", path = "api/v1/booking/{bookid}", hasBody = true)
     Call<Void> deletebook(@Path("bookid") String bookid);
+
+    @Multipart
+    @POST("api/v1/upload")
+    Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);
+
 }

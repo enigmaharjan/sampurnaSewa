@@ -62,12 +62,11 @@ public class UpdateJob extends AppCompatActivity {
                     public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                         RegisterResponse registerResponse = response.body();
                         if (registerResponse.getMessage().equals("success")) {
-                            Toast.makeText(UpdateJob.this, "Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateJob.this, "Updated", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(UpdateJob.this,AdminActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(UpdateJob.this, "sorry", Toast.LENGTH_SHORT).show();
-
                         }
 
                     }

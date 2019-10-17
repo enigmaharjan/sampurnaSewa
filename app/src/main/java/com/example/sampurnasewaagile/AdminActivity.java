@@ -62,19 +62,19 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
                 showFragment(new AddJobFrag(), "Add Jobs");
                 break;
             case R.id.viewJobs:
-                showFragment(new ViewJobFrag(), "View Jobs");
+                showFragment(new ViewJobFrag(), "Show Jobs");
                 break;
             case R.id.viewBook:
-                showFragment(new ViewAdminBookFrag(), "View Book Request");
+                showFragment(new ViewAdminBookFrag(), "Show Book Request");
                 break;
             case R.id.viewConfirmed:
-                showFragment(new ViewAdminConfBookFrag(), "View Confirmed Book");
+                showFragment(new ViewAdminConfBookFrag(), "Show Confirmed Book");
                 break;
             case  R.id.viewCompleted:
-                showFragment(new ViewAdminCompletedFrag(),"Completed book");
+                showFragment(new ViewAdminCompletedFrag(),"Show Completed book");
                 break;
             case R.id.viewFeedback:
-                showFragment(new ViewFeedbackFrag(), "View Feedback");
+                showFragment(new ViewFeedbackFrag(), "Show View Feedback");
                 break;
         }
         drawerLayout.closeDrawer(Gravity.START);

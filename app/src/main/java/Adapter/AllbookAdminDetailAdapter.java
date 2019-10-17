@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.AdminActivity;
 import com.example.sampurnasewaagile.R;
 
 import java.util.List;
@@ -53,7 +55,6 @@ public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdmin
                 List<User> list = response.body();
                 for (User user : list) {
                     username= user.getUsername();
-                    Toast.makeText(mcontext, ""+username, Toast.LENGTH_SHORT).show();
                     detailsViewHolder.tvjuser.setText(username);
                 }
             }
@@ -67,7 +68,6 @@ public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdmin
             detailsViewHolder.tvjdate.setText(booking.getJobdate());
             detailsViewHolder.tvjtime.setText(booking.getJobtime());
             detailsViewHolder.tvjprob.setText(booking.getJobproblem());
-            detailsViewHolder.tvjuser.setText(booking.getUserid());
             final String bid = booking.getBookid();
             detailsViewHolder.btnconf.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -83,6 +83,8 @@ public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdmin
                             BookingResponse bookingResponse = response.body();
                             if (bookingResponse.getMessage().equals("Success")) {
                                 Toast.makeText(mcontext, "Confirmed", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(mcontext, AdminActivity.class);
+                                mcontext.startActivity(intent);
                             } else {
                                 Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                             }
