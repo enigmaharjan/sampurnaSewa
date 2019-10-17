@@ -44,11 +44,7 @@ public class ViewCompletedFrag extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_view_book, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewallbook);
-
-
         showallBook();
-
-
         return view;
 
 }

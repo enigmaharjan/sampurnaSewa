@@ -1,7 +1,20 @@
 package Fragments;
 
+import android.Manifest;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +26,31 @@ import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 import Api.Api;
+import Model.ImageResponse;
 import Model.RegisterResponse;
 import Model.User;
 import Url.Url;
+import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_OK;
+
 public class RegisterPage extends Fragment {
     private EditText regemail, regpassword, regfullname, regusername, regphoneno, regaddress, regconfpassword;
     private TextView btnSignIn, btnSignUp;
+    private CircleImageView imgUser;
+    private String imagePath, imageName;
+    private int imgCheck;
 //    private ProgressBar progressBar;
 
     public RegisterPage() {
@@ -43,11 +70,23 @@ public class RegisterPage extends Fragment {
         regpassword = view.findViewById(R.id.regpasswordlog);
         regconfpassword = view.findViewById(R.id.regconfpasswordlog);
         btnSignIn = view.findViewById(R.id.sign_in_button);
-      
+        imgUser = view.findViewById(R.id.profileImageRegister);
+        checkPermission();
+
+        imgUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BrowseImage();
+            }
+        });
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isEmpty()) {
+                    if(imagePath!=null) {
+                        SaveImageOnly();
+                    }
                     Api api = Url.getInstance().create(Api.class);
                     String userid = "10000";
                     String name = regfullname.getText().toString();
@@ -58,7 +97,7 @@ public class RegisterPage extends Fragment {
 
                     String address = regaddress.getText().toString();
                     String phone = regphoneno.getText().toString();
-                    String imagename = "no image";
+                    String imagename = imageName;
 
                     User user = new User(userid, name, username,  email, password, address,phone, imagename);
                     Call<RegisterResponse> listCall = api.addUsers(user);
@@ -86,6 +125,8 @@ public class RegisterPage extends Fragment {
         });
         return view;
     }
+
+
 
     private boolean isEmpty() {
         if (TextUtils.isEmpty((regfullname.getText().toString()))) {
@@ -118,5 +159,79 @@ public class RegisterPage extends Fragment {
             return true;
         }
         return false;
+    }
+
+    private void BrowseImage() {
+        Intent i = new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityForResult(i, 0);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            if (data == null){
+                Toast.makeText(getActivity(), "Please Select An Image", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(resultCode != RESULT_OK){
+            return;
+        }
+        Uri uri = data.getData();
+        imagePath = getRealPathFromUri(uri);
+        previewImage(imagePath);
+//        imgCheck = 1;   //it is done if you have to update something in this fi
+    }
+
+    private String getRealPathFromUri(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getActivity(), uri,projection,null,null,null);
+        Cursor cursor = loader.loadInBackground();
+        int colIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(colIndex);
+        cursor.close();
+        return result;
+    }
+    private void previewImage(String imagPath) {
+        File imgFile = new File(imagPath);
+        if (imgFile.exists()){
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            imgUser.setImageBitmap(bitmap);
+
+        }
+    }
+
+    private void SaveImageOnly(){
+        File file = new File(imagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("imageFile", file.getName(),requestBody);
+
+        Api imageAPI = Url.getInstance().create(Api.class);
+        Call<ImageResponse> call = imageAPI.uploadImage(body);
+        StrictMode();
+        try{
+            Response<ImageResponse> imageResponseResponse = call.execute();
+            imageName = imageResponseResponse.body().getFilename();
+        } catch (IOException e) {
+            Toast.makeText(getActivity(), "Error " + e , Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+    private  void checkPermission(){
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]
+                    {
+                            Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },0);
+        }
     }
 }

@@ -61,7 +61,7 @@ public class JobDetailAdapteradmin extends RecyclerView.Adapter<JobDetailAdapter
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgItem=itemView.findViewById(R.id.imgProfile);
+            imgItem=itemView.findViewById(R.id.imgJobProfile);
             tvjname = itemView.findViewById(R.id.tvjNameadmin);
         }
 

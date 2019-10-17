@@ -2,7 +2,9 @@ package Fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,8 @@ import com.example.sampurnasewaagile.R;
 import com.example.sampurnasewaagile.UpdateProfile;
 import com.example.sampurnasewaagile.ViewPagerActivity;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import Api.Api;
@@ -25,17 +29,20 @@ import Model.RegisterResponse;
 import Model.User;
 import Model.User2;
 import Url.Url;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static Url.Url.BASE_URL;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ProfileFragment extends Fragment {
     private TextView btnlogout;
     private TextView tvUName, tvUuserName, tvUEmail, tvUAddress, tvUphone,usernameProf;
     private Button btnEditProfile;
-    String name, tvUN, tvUE, tvUp, tvUA;
+    private CircleImageView imageProfile;
+    String name, tvUN, tvUE, tvUp, tvUA, profileImageName, imagePath;
 
     @Nullable
     @Override
@@ -49,6 +56,8 @@ public class ProfileFragment extends Fragment {
         tvUphone = view.findViewById(R.id.tvUphone);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
         btnlogout = view.findViewById(R.id.btnlogout);
+        imageProfile = view.findViewById(R.id.profileImage);
+
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +79,7 @@ public class ProfileFragment extends Fragment {
                 List<User2> list =response.body();
                 for(User2 user2: list){
                     name=user2.getName();
+                    profileImageName = user2.getImagename();
                     tvUN=user2.getUsername();
                     tvUE=user2.getEmail();
                     tvUp=user2.getPhone();
@@ -80,6 +90,17 @@ public class ProfileFragment extends Fragment {
                     tvUEmail.setText(tvUE);
                     tvUAddress.setText(tvUp);
                     tvUphone.setText(tvUA);
+                    final String imgPath = BASE_URL + "uploads/" + profileImageName;
+                    imagePath = imgPath;
+//            Toast.makeText(getApplicationContext(), imagePath, Toast.LENGTH_SHORT).show();
+                    StrictMode();
+                    try {
+                        java.net.URL url = new java.net.URL(imgPath);
+                        imageProfile.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Error " + e, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -102,4 +123,8 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
 }
