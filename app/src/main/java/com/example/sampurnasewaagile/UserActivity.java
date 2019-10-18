@@ -1,5 +1,6 @@
 package com.example.sampurnasewaagile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         nav.findViewById(R.id.bookJobs).setOnClickListener(this);
         nav.findViewById(R.id.myPending).setOnClickListener(this);
         nav.findViewById(R.id.myconfirmed).setOnClickListener(this);
+        nav.findViewById(R.id.viewLogout2).setOnClickListener(this);
 
         showFragment(new ProfileFragment(), "My Profile");
     }
@@ -64,6 +66,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.myconfirmed:
                 showFragment(new ViewUConfBookingFragment(), "My Confirmed Book");
+            case R.id.viewLogout2:
+                Intent intent = new Intent(UserActivity.this, ViewPagerActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(Gravity.START);

@@ -48,15 +48,6 @@ public class ProfileFragment extends Fragment {
         tvUAddress = view.findViewById(R.id.tvUAddress);
         tvUphone = view.findViewById(R.id.tvUphone);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
-        btnlogout = view.findViewById(R.id.btnlogout);
-        btnlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ViewPagerActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");

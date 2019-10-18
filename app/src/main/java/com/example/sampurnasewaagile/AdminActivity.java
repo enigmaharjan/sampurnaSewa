@@ -1,5 +1,6 @@
 package com.example.sampurnasewaagile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -39,6 +40,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         nav.findViewById(R.id.viewConfirmed).setOnClickListener(this);
         nav.findViewById(R.id.viewFeedback).setOnClickListener(this);
         nav.findViewById(R.id.viewCompleted).setOnClickListener(this);
+        nav.findViewById(R.id.viewLogout).setOnClickListener(this);
 
 
         showFragment(new ViewJobFrag(), "All Jobs");
@@ -70,11 +72,16 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             case R.id.viewConfirmed:
                 showFragment(new ViewAdminConfBookFrag(), "Show Confirmed Book");
                 break;
-            case  R.id.viewCompleted:
-                showFragment(new ViewAdminCompletedFrag(),"Show Completed book");
+            case R.id.viewCompleted:
+                showFragment(new ViewAdminCompletedFrag(), "Show Completed book");
                 break;
             case R.id.viewFeedback:
                 showFragment(new ViewFeedbackFrag(), "Show View Feedback");
+                break;
+            case R.id.viewLogout:
+                Intent intent = new Intent(AdminActivity.this, ViewPagerActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         drawerLayout.closeDrawer(Gravity.START);

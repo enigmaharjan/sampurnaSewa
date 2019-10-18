@@ -132,19 +132,7 @@
             </RelativeLayout>
 
             <View style="@style/proifleDetailsView" />
-            <RelativeLayout style="@style/profileDetailsLayout">
-                <ImageView
-                    android:id="@+id/imgLogout"
-                    android:src="@drawable/logout"
-                    style="@style/profileDetailsImage" />
 
-                <TextView
-                    android:id="@+id/btnlogout"
-                    android:text="Log Out"
-                    android:textSize="25dp"
-                    android:layout_toRightOf="@id/imgLogout"
-                    style="@style/profileDetailsTextMain" />
-            </RelativeLayout>
             <Button
                 android:id="@+id/btnEditProfile"
                 android:background="@drawable/ic_button_edit"
