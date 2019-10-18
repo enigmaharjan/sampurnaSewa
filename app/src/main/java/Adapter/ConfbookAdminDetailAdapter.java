@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.AdminActivity;
 import com.example.sampurnasewaagile.R;
 import com.example.sampurnasewaagile.UpdateProfile;
 import com.example.sampurnasewaagile.ViewProfile;
@@ -116,7 +117,8 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                     Api api = Url.getInstance().create(Api.class);
                     String bookid = bid;
                     String completed = "1";
-                    Booking2 booking2 = new Booking2(bookid, completed);
+                    String feedback="null";
+                    Booking2 booking2 = new Booking2(bookid, completed, feedback);
                     Call<BookingResponse> listCall = api.completedbook(booking2);
                     listCall.enqueue(new Callback<BookingResponse>() {
                         @Override
@@ -124,6 +126,8 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                             BookingResponse bookingResponse = response.body();
                             if (bookingResponse.getMessage().equals("Success")) {
                                 Toast.makeText(mcontext, "Completed", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(mcontext, AdminActivity.class);
+                                mcontext.startActivity(intent);
                             } else {
                                 Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                             }

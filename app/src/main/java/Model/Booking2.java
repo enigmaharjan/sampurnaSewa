@@ -3,10 +3,12 @@ package Model;
 public class Booking2 {
     private String bookid, jobname,jobtime,jobdate,jobproblem,userid,confirmation,completed,feedback;
 
-    public Booking2(String bookid, String completed) {
+    public Booking2(String bookid, String completed, String feedback) {
         this.bookid = bookid;
         this.completed = completed;
+        this.feedback = feedback;
     }
+    
     public Booking2(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid, String confirmation, String completed, String feedback) {
         this.jobname = jobname;
         this.jobtime = jobtime;

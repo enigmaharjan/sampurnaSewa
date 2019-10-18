@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,32 +7,36 @@
     android:orientation="vertical"
     tools:context=".FeedbackActivity"
     android:layout_gravity="center"
-    android:layout_marginTop="30dp">
-
+    android:background="#383333">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Give Feedback"
+        android:id="@+id/l1"
         android:gravity="center"
         android:textSize="30sp"
-        android:textColor="#000"
+        android:textColor="#FFFFFF"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etfeedback"
         android:maxLines="3"
+        android:layout_below="@+id/l1"
         android:hint="Write feedback here......."
         android:padding="20dp"
+        android:textColor="#000000"
+        android:background="#FFF"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="Submit"
+        android:layout_centerInParent="true"
         android:textAllCaps="false"
+        android:layout_below="@+id/etfeedback"
         android:id="@+id/btnsubmit"/>
 
-</LinearLayout>
+</RelativeLayout>
