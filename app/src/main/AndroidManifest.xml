@@ -19,7 +19,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ViewProfile"></activity>
         <activity android:name=".UpdateJob" />
-        <activity android:name=".FeedbackActivity" />
         <activity android:name=".BookUpdate" />
         <activity android:name=".ShowAllBookAdmin" />
         <activity android:name=".ShowAdminConfBook" />
