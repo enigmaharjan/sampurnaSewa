@@ -45,7 +45,6 @@ public class ShowAllBookAdmin extends AppCompatActivity {
             listCall.enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    Toast.makeText(ShowAllBookAdmin.this, "load Bookings", Toast.LENGTH_SHORT).show();
                     List<Booking> booking = response.body();
                     AllbookAdminDetailAdapter allbookAdminDetailAdapter = new AllbookAdminDetailAdapter(ShowAllBookAdmin.this, booking);
                     recyclerView.setAdapter(allbookAdminDetailAdapter);

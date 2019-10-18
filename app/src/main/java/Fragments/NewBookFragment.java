@@ -50,7 +50,6 @@ public class NewBookFragment extends Fragment {
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Jobs", Toast.LENGTH_SHORT).show();
                 List<Job> jobs = response.body();
                 JobDetailAdapter detailsAdapter = new JobDetailAdapter(getActivity(), jobs);
                 recyclerView.setAdapter(detailsAdapter);

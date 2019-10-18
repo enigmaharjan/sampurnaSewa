@@ -56,7 +56,6 @@ public class ViewUConfBookingFragment extends Fragment {
         listCall.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                Toast.makeText(getContext(), "My confirmed Bookings", Toast.LENGTH_SHORT).show();
                 List<Booking> booking = response.body();
                 MyConfbookDetailAdapter mybookDetailAdapter = new MyConfbookDetailAdapter(getActivity(), booking);
                 recyclerView.setAdapter(mybookDetailAdapter);

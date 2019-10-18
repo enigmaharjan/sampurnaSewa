@@ -61,7 +61,6 @@ public class ViewAdminCompletedFrag extends Fragment {
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Completed", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
                 CompJobDetailAdapteradmin allbookDetailAdapter = new CompJobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);

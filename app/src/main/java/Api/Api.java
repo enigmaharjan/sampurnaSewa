@@ -86,7 +86,6 @@ public interface Api {
     Call<Void> deletebook(@Path("bookid") String bookid);
 
     @Multipart
-    @POST("api/v1/upload")
+    @POST("upload")
     Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);
-
 }

@@ -2,6 +2,8 @@ package Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,9 +15,13 @@ import android.widget.TextView;
 import com.example.sampurnasewaagile.R;
 import com.example.sampurnasewaagile.UpdateJob;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import Model.Job;
+
+import static Url.Url.BASE_URL;
 
 public class JDetailAdapteradmin extends RecyclerView.Adapter<JDetailAdapteradmin.DetailsViewHolder> {
     Context mcontext;
@@ -46,7 +52,16 @@ public class JDetailAdapteradmin extends RecyclerView.Adapter<JDetailAdapteradmi
         }else {
             detailsViewHolder.tvjavail.setText("No");
         }
-
+        final String image = job.getJobimage();
+        final String imgPath = BASE_URL + "uploads/" + image;
+        String imagePath = imgPath;
+        StrictMode();
+        try {
+            java.net.URL url = new java.net.URL(imagePath);
+            detailsViewHolder.imgItem.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,9 +71,14 @@ public class JDetailAdapteradmin extends RecyclerView.Adapter<JDetailAdapteradmi
                 intent.putExtra("min", job.getMinimumcharge());
                 intent.putExtra("jobid", job.getJobid());
                 intent.putExtra("avail", job.getAvailability());
+                intent.putExtra("img", image);
                 mcontext.startActivity(intent);
             }
         });
+    }
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
@@ -72,7 +92,7 @@ public class JDetailAdapteradmin extends RecyclerView.Adapter<JDetailAdapteradmi
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgItem=itemView.findViewById(R.id.imgProfile);
+            imgItem=itemView.findViewById(R.id.jobimg);
             tvjname = itemView.findViewById(R.id.tvjName);
             tvjdesc = itemView.findViewById(R.id.tvjdesc);
             tvjprice = itemView.findViewById(R.id.tvjprice);

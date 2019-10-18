@@ -95,7 +95,6 @@ public class BookUpdate extends AppCompatActivity implements DatePickerDialog.On
                 String confirmation="0";
                 String completed="0";
                 Booking booking = new Booking(bookid, jobname, jobtime, jobdate, jobproblem, userid,confirmation,completed);
-                Toast.makeText(BookUpdate.this, "" + bookid, Toast.LENGTH_SHORT).show();
                 Call<BookingResponse> call = api.updatebook(booking);
                 call.enqueue(new Callback<BookingResponse>() {
                     @Override

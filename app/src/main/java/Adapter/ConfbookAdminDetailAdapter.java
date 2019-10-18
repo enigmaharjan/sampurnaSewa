@@ -59,7 +59,6 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                 List<User> list = response.body();
                 for (User user : list) {
                     username= user.getUsername();
-                    Toast.makeText(mcontext, ""+username, Toast.LENGTH_SHORT).show();
                     detailsViewHolder.tvjuser.setText(username);
 
                 }
@@ -90,8 +89,10 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                                 String email=user2.getEmail();
                                 String phone=user2.getPhone();
                                 String address=user2.getAddress();
-                                Toast.makeText(mcontext, ""+name, Toast.LENGTH_SHORT).show();
+                                String image=user2.getImagename();
+                                Toast.makeText(mcontext, ""+image, Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(mcontext, ViewProfile.class);
+                                intent.putExtra("image",image);
                                 intent.putExtra("name",name);
                                 intent.putExtra("username",username);
                                 intent.putExtra("email",email);

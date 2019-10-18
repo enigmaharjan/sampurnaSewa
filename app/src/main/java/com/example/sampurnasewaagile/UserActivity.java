@@ -66,6 +66,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.myconfirmed:
                 showFragment(new ViewUConfBookingFragment(), "My Confirmed Book");
+                break;
             case R.id.viewLogout2:
                 Intent intent = new Intent(UserActivity.this, ViewPagerActivity.class);
                 startActivity(intent);

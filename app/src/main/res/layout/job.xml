@@ -6,7 +6,7 @@
     android:background="@color/colorBackground">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgProfile"
+            android:id="@+id/jobimg"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="8dp"
@@ -20,10 +20,10 @@
             android:textStyle="bold"
             android:textSize="30sp"
             android:textColor="#000AFF"
-            android:layout_alignTop="@+id/imgProfile"
-            android:layout_toRightOf="@+id/imgProfile"
+            android:layout_alignTop="@+id/jobimg"
+            android:layout_toRightOf="@+id/jobimg"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/imgProfile"
+            android:layout_toEndOf="@+id/jobimg"
             android:hint="Job name"/>
 
     <LinearLayout
@@ -33,7 +33,7 @@
         android:textSize="20sp"
         android:layout_alignLeft="@+id/tvjName"
         android:layout_below="@+id/tvjName"
-        android:layout_toEndOf="@+id/imgProfile">
+        android:layout_toEndOf="@+id/jobimg">
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:textSize="20sp"
         android:layout_alignLeft="@+id/lindec"
         android:layout_below="@+id/lindec"
-        android:layout_toEndOf="@+id/imgProfile">
+        android:layout_toEndOf="@+id/jobimg">
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
             android:textSize="20sp"
             android:layout_alignLeft="@+id/tvjName"
             android:layout_below="@+id/lindec"
-            android:layout_toEndOf="@+id/imgProfile"
+            android:layout_toEndOf="@+id/jobimg"
             android:hint="Charge" />
     </LinearLayout>
 
@@ -86,7 +86,7 @@
         android:textSize="20sp"
         android:layout_alignLeft="@+id/lindec"
         android:layout_below="@+id/linprice"
-        android:layout_toEndOf="@+id/imgProfile">
+        android:layout_toEndOf="@+id/jobimg">
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
             android:maxLines="2"
             android:textSize="20sp"
             android:layout_alignLeft="@+id/tvjName"
-            android:layout_toEndOf="@+id/imgProfile"
+            android:layout_toEndOf="@+id/jobimg"
             android:hint="Yes/No" />
     </LinearLayout>
 </RelativeLayout>

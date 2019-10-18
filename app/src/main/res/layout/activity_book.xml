@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:id="@+id/jobdate"
-            android:hint="Click to Select Time"
+            android:hint="Click to Select Date"
             android:textSize="20dp"/>
     </LinearLayout>
 

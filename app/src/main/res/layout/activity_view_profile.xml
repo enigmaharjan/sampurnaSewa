@@ -1,138 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#efedf0">
-    <View
+    android:layout_height="match_parent">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@drawable/profile_bk"/>
+        android:layout_height="wrap_content">
 
-
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImage"
-            android:layout_marginTop="30dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_person"
-            android:layout_centerHorizontal="true"
-            android:elevation="1dp"/>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="30dp"
-            android:id="@+id/upunamehead"
-            android:textColor="#FFF"/>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp">
 
-            <LinearLayout
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/prof"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_person"
+                android:layout_centerHorizontal="true"
+                android:elevation="1dp" />
+
+            <!--    full name    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="Full Name"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/upname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:inputType="textCapWords"
+                android:hint="@string/firstname_lastname"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="Username"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                <TextView
-                    style="@style/headerText"
-                    android:text="Account Info"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/upuname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:hint="username"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:includeFontPadding="false"
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                android:focusable="true" />
 
-                <RelativeLayout
-                    style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/nameImgView"
-                        android:src="@drawable/ic_name"
-                        style="@style/profileDetailsImage" />
+            <!--    email    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="Email"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                    <TextView
-                        android:id="@+id/upname"
-                        android:hint="Fullname"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/nameImgView"
-                        style="@style/profileDetailsMiniText" />
+            <TextView
+                android:id="@+id/upemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hint_email"
+                android:includeFontPadding="false"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:maxLines="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="Address"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                </RelativeLayout>
+            <TextView
+                android:id="@+id/upaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:hint="Address"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
 
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/nameImageView"
-                        android:src="@drawable/ic_name"
-                        style="@style/profileDetailsImage" />
-                    <TextView
-                        android:id="@+id/upuname"
-                        android:hint="Username"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/nameImageView"
-                        style="@style/profileDetailsMiniText" />
+            <!--    contact    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/normal"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="Phone No"
+                android:textColor="@color/blackTextColor"
+                android:textSize="17sp" />
 
-                </RelativeLayout>
-
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/mobileImageView"
-                        android:src="@drawable/ic_email"
-                        style="@style/profileDetailsImage" />
-
-                    <TextView
-                        android:id="@+id/upemail"
-                        android:hint="Email"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/mobileImageView"
-                        style="@style/profileDetailsMiniText" />
-
-                </RelativeLayout>
-
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/addImageView"
-                        android:src="@drawable/ic_address"
-                        style="@style/profileDetailsImage" />
-                    <TextView
-                        android:id="@+id/upaddress"
-                        android:hint="Address"
-                        android:textSize="25dp"
-                        android:maxLines="2"
-                        android:layout_toRightOf="@id/addImageView"
-                        style="@style/profileDetailsMiniText" />
-
-                </RelativeLayout>
-
-                <View style="@style/proifleDetailsView" />
-                <RelativeLayout style="@style/profileDetailsLayout">
-                    <ImageView
-                        android:id="@+id/phImageView"
-                        android:src="@drawable/ic_mobile"
-                        style="@style/profileDetailsImage" />
-
-                    <TextView
-                        android:id="@+id/upphone"
-                        android:hint="Phone no"
-                        android:textSize="25dp"
-                        android:layout_toRightOf="@id/phImageView"
-                        style="@style/profileDetailsMiniText" />
-                </RelativeLayout>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-
-
+            <TextView
+                android:id="@+id/upphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/border_radius_etext_unfill"
+                android:fontFamily="@font/normal"
+                android:inputType="number"
+                android:hint="98********"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:includeFontPadding="false"
+                android:maxLines="1" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
-

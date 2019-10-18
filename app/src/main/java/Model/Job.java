@@ -14,14 +14,6 @@ public class Job {
         this.availability = availability;
     }
 
-    public Job(String jobid, String jobname, String jobdetail, String minimumcharge, String availability) {
-        this.jobid = jobid;
-        this.jobname = jobname;
-        this.jobdetail = jobdetail;
-        this.minimumcharge = minimumcharge;
-        this.availability = availability;
-
-    }
 
     public Job(String jobid) {
         this.jobid = jobid;

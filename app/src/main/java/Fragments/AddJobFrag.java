@@ -1,7 +1,9 @@
 package Fragments;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,7 +12,9 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -50,7 +54,7 @@ public class AddJobFrag extends Fragment {
     private TextView add_job;
     private Spinner avail;
     private ImageView jobImage;
-    private String imagePath, imageName;
+    private String imagePath, jobimg;
 
     public AddJobFrag() {
         // Required empty public constructor
@@ -67,7 +71,7 @@ public class AddJobFrag extends Fragment {
         add_job = view.findViewById(R.id.add_job);
         avail = view.findViewById(R.id.avail);
         jobImage = view.findViewById(R.id.jobImage);
-
+        checkPermission();
         add_job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,29 +91,33 @@ public class AddJobFrag extends Fragment {
         return view;
     }
 
-    private void BrowseImage(){
+    private void BrowseImage() {
         Intent i = new Intent(Intent.ACTION_PICK);
         i.setType("image/*");
-        startActivityForResult(i,0);
+        startActivityForResult(i, 0);
+
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(data == null){
-                Toast.makeText(getActivity(), "Select an image", Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_OK){
+            if (data == null){
+                Toast.makeText(getActivity(), "Please Select An Image", Toast.LENGTH_SHORT).show();
             }
+        }
+        else if(resultCode != RESULT_OK){
+            return;
         }
         Uri uri = data.getData();
         imagePath = getRealPathFromUri(uri);
         previewImage(imagePath);
+//        imgCheck = 1;   //it is done if you have to update something in this fi
     }
 
     private String getRealPathFromUri(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
-        CursorLoader loader = new CursorLoader(getContext(), uri,
-                projection,null,null,null);
+        CursorLoader loader = new CursorLoader(getActivity(), uri,projection,null,null,null);
         Cursor cursor = loader.loadInBackground();
         int colIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
@@ -117,46 +125,55 @@ public class AddJobFrag extends Fragment {
         cursor.close();
         return result;
     }
-    private void previewImage(String ivImag) {
-        File imgFile = new File(ivImag);
-        if(imgFile.exists()){
-            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            jobImage.setImageBitmap(myBitmap);
+    private void previewImage(String imagPath) {
+        File imgFile = new File(imagPath);
+        if (imgFile.exists()){
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            jobImage.setImageBitmap(bitmap);
+
         }
     }
-    private void StrictMode(){
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-    }
-    private void SaveImageOnly() {
+
+    private void SaveImageOnly(){
         File file = new File(imagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("imageFile", file.getName(),requestBody);
 
-        RequestBody requestBody = RequestBody.create
-                (MediaType.parse("multipart/form-data"),file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData
-                ("imageFile", file.getName(), requestBody);
-        Api userApi = Url.getInstance().create(Api.class);
-        Call<ImageResponse> responseCall = userApi.uploadImage(body);
-
+        Api imageAPI = Url.getInstance().create(Api.class);
+        Call<ImageResponse> call = imageAPI.uploadImage(body);
         StrictMode();
         try{
-            Response<ImageResponse> imageResponseResponse = responseCall.execute();
-            imageName = imageResponseResponse.body().getFilename();
-        }catch (IOException e){
-            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            Response<ImageResponse> imageResponseResponse = call.execute();
+            jobimg = imageResponseResponse.body().getFilename();
+        } catch (IOException e) {
+            Toast.makeText(getActivity(), "Error " + e , Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
 
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+    private  void checkPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
+            ActivityCompat.requestPermissions(getActivity(), new String[]
+                    {
+                            Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, 0);
+        }
+    }
     private void addjob() {
+        SaveImageOnly();
         Api api = Url.getInstance().create(Api.class);
         final String jobname = jname.getText().toString();
+        final String jobid="00000000000000000";
         final String jobdetail = jdetail.getText().toString();
         final String minimumcharge = mincharge.getText().toString();
         final String availability = avail.getSelectedItem().toString();
-        String jobimage = "name";
-        Job job = new Job(jobname, jobdetail, minimumcharge, jobimage, availability);
+        String jobimage = jobimg;
+        Job job = new Job(jobid,jobname, jobdetail, minimumcharge, jobimage, availability);
         Call<JobResponse> call = api.addjob(job);
         call.enqueue(new Callback<JobResponse>() {
             @Override

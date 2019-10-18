@@ -60,7 +60,6 @@ public class ViewAdminBookFrag extends Fragment {
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Bookings", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
                 JobDetailAdapteradmin allbookDetailAdapter = new JobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
