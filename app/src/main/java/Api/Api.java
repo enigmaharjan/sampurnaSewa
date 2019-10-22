@@ -70,6 +70,9 @@ public interface Api {
     @GET("api/v1/booked/{userid}/{confirmation}")
     Call<List<Booking>> getbook(@Path("userid") String userid,@Path("confirmation") String confirmation);
 
+    @GET("api/v1/booked/{userid}/{confirmation}/{completed}")
+    Call<List<Booking>> getcompleted(@Path("userid") String userid,@Path("confirmation") String confirmation,@Path("completed") String completed);
+
     @GET("api/v1/user/{userid}")
     Call<List<User2>> getuser(@Path("userid") String userid);
 
