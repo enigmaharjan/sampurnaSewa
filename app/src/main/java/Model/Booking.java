@@ -9,6 +9,12 @@ public class Booking {
         this.confirmation = confirmation;
     }
 
+    public Booking(String bookid, String confirmation, String completed) {
+        this.bookid = bookid;
+        this.confirmation = confirmation;
+        this.completed = completed;
+    }
+
     public Booking(String bookid, String jobname, String jobtime, String jobdate, String jobproblem, String userid, String confirmation, String completed, String feedback) {
         this.bookid = bookid;
         this.jobname = jobname;

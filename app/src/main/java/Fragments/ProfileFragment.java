@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,8 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +29,12 @@ import java.io.InputStream;
 import java.util.List;
 
 import Api.Api;
+import Model.Booking;
 import Model.RegisterResponse;
 import Model.User;
 import Model.User2;
 import Url.Url;
+import channel.CreateChannel;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +47,9 @@ public class ProfileFragment extends Fragment {
     private TextView tvUName, tvUuserName, tvUEmail, tvUAddress, tvUphone,btnEditProfile;
     String name, tvUN, tvUE, tvUp, tvUA,profileImageName,imagePath;
     private ImageView imageProfile;
+    int number;
+    NotificationManagerCompat notificationManagerCompact;
+
 
     @Nullable
     @Override
@@ -54,12 +62,43 @@ public class ProfileFragment extends Fragment {
         tvUphone = view.findViewById(R.id.tvUphone);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
         imageProfile = view.findViewById(R.id.profileImage);
+        notificationManagerCompact= NotificationManagerCompat.from(getContext());
+        CreateChannel channel = new CreateChannel(getContext());
+        channel.createChannel();
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");
-
-
+        final String sharedNumber1 = sharedPreferences.getString("number1","0");
         Api api = Url.getInstance().create(Api.class);
+        String confirmation="1";
+        String completed="0";
+        Call<List<Booking>> listCall=api.getcompleted(userid,confirmation,completed);
+        listCall.enqueue(new Callback<List<Booking>>() {
+            @Override
+            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                List<Booking> bookingList=response.body();
+                for (Booking booking :bookingList){
+                    number += 1;
+                }
+                if (Integer.parseInt(sharedNumber1)<number){
+                    Notification notification = new NotificationCompat.Builder(getContext(), CreateChannel.CHANNEL_1)
+                            .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
+                            .setContentTitle("Sampurna Sewa")
+                            .setContentText("Your Booking has been confirmed")
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .build();
+                    notificationManagerCompact.notify(1, notification);
+                }else {
+                    Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Booking>> call, Throwable t) {
+
+            }
+        });
         Call<List<User2>> userCall = api.getuser(userid);
         userCall.enqueue(new Callback<List<User2>>() {
             @Override

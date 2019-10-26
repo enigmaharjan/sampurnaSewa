@@ -1,9 +1,12 @@
 package com.example.sampurnasewaagile;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +22,7 @@ import Api.Api;
 import Model.Booking;
 import Model.BookingResponse;
 import Url.Url;
+import channel.CreateChannel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +30,8 @@ import retrofit2.Response;
 public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private TextView jobtype, jtime, jdate, problem;
     private Button btnbook;
+    NotificationManagerCompat notificationManagerCompact;
+
     String jobname, uid;
 
     @Override
@@ -47,6 +53,10 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
             jobtype.setText(jobname);
         }
 
+        notificationManagerCompact=NotificationManagerCompat.from(Book.this);
+        CreateChannel channel = new CreateChannel(Book.this);
+        channel.createChannel();
+
         jtime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +71,7 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                         jtime.setText(hourOfDay + ":" + minute);
                     }
                 }, hour, minute, false);
+
                 timePickerDialog.show();
             }
         });
@@ -75,6 +86,7 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         Book.this, Book.this, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()+1000 );
                 datePickerDialog.show();
             }
         });
@@ -101,7 +113,17 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                             Toast.makeText(Book.this, "Success", Toast.LENGTH_SHORT).show();
                             Intent intent =new Intent(Book.this, UserActivity.class);
                             startActivity(intent);
+
                             finish();
+                            Notification notification = new NotificationCompat.Builder(Book.this, CreateChannel.CHANNEL_1)
+                                    .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
+                                    .setContentTitle("Sampurna Sewa")
+                                    .setContentText("New Booking has been made")
+                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                    .build();
+                            notificationManagerCompact.notify(1, notification);
+
                         } else {
                             Toast.makeText(Book.this, "Sorry", Toast.LENGTH_SHORT).show();
                         }
