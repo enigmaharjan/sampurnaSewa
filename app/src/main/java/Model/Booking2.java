@@ -19,6 +19,12 @@ public class Booking2 {
         this.completed = completed;
         this.feedback = feedback;
     }
+    public Booking2(String bookid, String confirmation, String completed, String feedback) {
+        this.bookid = bookid;
+        this.confirmation = confirmation;
+        this.completed = completed;
+        this.feedback = feedback;
+    }
 
     public String getBookid() {
         return bookid;

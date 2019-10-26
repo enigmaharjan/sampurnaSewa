@@ -141,6 +141,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linuserid">
     </Button>
+        <Button
+            android:id="@+id/btnrejt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnconf"
+            android:layout_below="@+id/linuserid"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Reject"
+            android:textAllCaps="false"></Button>
     </RelativeLayout>
 
 

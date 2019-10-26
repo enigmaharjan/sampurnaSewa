@@ -83,12 +83,12 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                 public void onClick(View v) {
                     Api api = Url.getInstance().create(Api.class);
                     String userid = booking.getUserid();
-                    Call<List<User2>> userCall = api.getuser(userid);
-                    userCall.enqueue(new Callback<List<User2>>() {
+                    Call<List<User>> userCall = api.getuser(userid);
+                    userCall.enqueue(new Callback<List<User>>() {
                         @Override
-                        public void onResponse(Call<List<User2>> call, Response<List<User2>> response) {
-                            List<User2> list =response.body();
-                            for(User2 user2: list){
+                        public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                            List<User> list =response.body();
+                            for(User user2: list){
                                 String name=user2.getName();
                                 String username=user2.getUsername();
                                 String email=user2.getEmail();
@@ -108,7 +108,7 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
                         }
 
                         @Override
-                        public void onFailure(Call<List<User2>> call, Throwable t) {
+                        public void onFailure(Call<List<User>> call, Throwable t) {
                             Toast.makeText(mcontext, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
                         }

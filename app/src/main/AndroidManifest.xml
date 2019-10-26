@@ -20,6 +20,9 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ViewProfile"></activity>
         <activity android:name=".UpdateJob" />
+        <activity android:name=".SplashActivity">
+        </activity>
+        <activity android:name=".FirstSplash" />
         <activity android:name=".BookUpdate" />
         <activity android:name=".ShowAllBookAdmin" />
         <activity android:name=".ShowAdminConfBook" />
@@ -27,14 +30,15 @@
         <activity android:name=".UpdateProfile" />
         <activity android:name=".Book" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".UserActivity" />
-        <activity android:name=".ViewPagerActivity">
+        <activity android:name=".LauchFirst">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UserActivity" />
+        <activity android:name=".ViewPagerActivity"/>
     </application>
 
 </manifest>

@@ -67,7 +67,7 @@ public class LoginPage extends Fragment {
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("User", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("userid", id);
-                    editor.commit();
+                    editor.apply();
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), UserActivity.class);
                     startActivity(intent);

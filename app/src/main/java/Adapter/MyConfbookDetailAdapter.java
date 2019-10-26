@@ -58,9 +58,12 @@ public class MyConfbookDetailAdapter extends RecyclerView.Adapter<MyConfbookDeta
 
         if (booking.getCompleted().equals("0")) {
             detailsViewHolder.tvjstatus.setText("Pending");
-        } else {
+        } else if (booking.getCompleted().equals("1")) {
             detailsViewHolder.tvjstatus.setText("Completed");
+        } else if (booking.getCompleted().equals("2")) {
+            detailsViewHolder.tvjstatus.setText("Rejected");
         }
+        else detailsViewHolder.tvjstatus.setText("");
         if (detailsViewHolder.tvjstatus.getText().equals("Completed") && detailsViewHolder.tvj.getText().equals("null")) {
             detailsViewHolder.btnfeedback.setVisibility(View.VISIBLE);
             detailsViewHolder.btnfeedback.setOnClickListener(new View.OnClickListener() {
