@@ -1,6 +1,7 @@
 package com.example.sampurnasewaagile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Fragments.NewBookFragment;
 import Fragments.ProfileFragment;
@@ -20,6 +22,24 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private DrawerLayout drawerLayout;
     private TextView tvTitle;
     private NavigationView nav;
+    int backButtonCount;
+    @Override
+    public void onBackPressed() {
+        if(backButtonCount >= 1)
+        {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
+            backButtonCount++;
+        }
+    }
+
 
 
     @Override
@@ -65,9 +85,13 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 showFragment(new ViewUserBookingFragment(), "My Pending Book");
                 break;
             case R.id.myconfirmed:
-                showFragment(new ViewUConfBookingFragment(), "My Confirmed Book");
+                showFragment(new ViewUConfBookingFragment(), "My Book Status");
                 break;
             case R.id.viewLogout2:
+                SharedPreferences prefs = getSharedPreferences("User", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("userid", "null");
+                editor.apply();
                 Intent intent = new Intent(UserActivity.this, ViewPagerActivity.class);
                 startActivity(intent);
                 finish();

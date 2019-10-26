@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class BookUpdate extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private TextView upttime, uptdate, uptproblem;
-    private Button uptbook;
+    private TextView uptbook;
     String jobdate, jobtime, jobproblem, bid, jname;
 
     @Override
@@ -51,6 +51,22 @@ public class BookUpdate extends AppCompatActivity implements DatePickerDialog.On
         uptdate.setText(jobdate);
         uptproblem.setText(jobproblem);
 
+
+
+        uptdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        BookUpdate.this, BookUpdate.this, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()+1000);
+                datePickerDialog.show();
+            }
+        });
         upttime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,21 +82,6 @@ public class BookUpdate extends AppCompatActivity implements DatePickerDialog.On
                     }
                 }, hour, minute, false);
                 timePickerDialog.show();
-            }
-        });
-
-        uptdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        BookUpdate.this, BookUpdate.this, year, month, day);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()+1000);
-                datePickerDialog.show();
             }
         });
         uptbook.setOnClickListener(new View.OnClickListener() {

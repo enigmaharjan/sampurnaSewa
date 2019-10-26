@@ -31,6 +31,9 @@ public interface Api {
     @GET("api/v1/job")
     Call<List<Job>> getJobs();
 
+    @PUT("api/v1/booking")
+    Call<BookingResponse> rejectbook(@Body Booking2 booking2);
+
     @GET("api/v1/jobs")
     Call<List<Job>> getallJobs();
 
@@ -74,7 +77,7 @@ public interface Api {
     Call<List<Booking>> getcompleted(@Path("userid") String userid,@Path("confirmation") String confirmation,@Path("completed") String completed);
 
     @GET("api/v1/user/{userid}")
-    Call<List<User2>> getuser(@Path("userid") String userid);
+    Call<List<User>> getuser(@Path("userid") String userid);
 
     @GET("api/v1/user/{userid}")
     Call<List<User>> getusername(@Path("userid") String userid);

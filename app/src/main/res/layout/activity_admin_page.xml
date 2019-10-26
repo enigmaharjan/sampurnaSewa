@@ -107,23 +107,6 @@
                     android:padding="5dp"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/btn_forgot_password"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/colorTransparent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="@font/normal"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:padding="5dp"
-                    android:text="@string/forgot_password"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15sp" />
 
             </LinearLayout>
 

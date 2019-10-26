@@ -47,8 +47,10 @@ public class ProfileFragment extends Fragment {
     private TextView tvUName, tvUuserName, tvUEmail, tvUAddress, tvUphone,btnEditProfile;
     String name, tvUN, tvUE, tvUp, tvUA,profileImageName,imagePath;
     private ImageView imageProfile;
-    int number;
+    int number,number2;
     NotificationManagerCompat notificationManagerCompact;
+    String confirmation;
+    String completed;
 
 
     @Nullable
@@ -69,9 +71,11 @@ public class ProfileFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");
         final String sharedNumber1 = sharedPreferences.getString("number1","0");
+        final String sharedNumber2 = sharedPreferences.getString("number2","0");
+
         Api api = Url.getInstance().create(Api.class);
-        String confirmation="1";
-        String completed="0";
+         confirmation="1";
+         completed="0";
         Call<List<Booking>> listCall=api.getcompleted(userid,confirmation,completed);
         listCall.enqueue(new Callback<List<Booking>>() {
             @Override
@@ -80,16 +84,16 @@ public class ProfileFragment extends Fragment {
                 for (Booking booking :bookingList){
                     number += 1;
                 }
-                if (Integer.parseInt(sharedNumber1)<number){
+                if (Integer.parseInt(sharedNumber1)<number) {
                     Notification notification = new NotificationCompat.Builder(getContext(), CreateChannel.CHANNEL_1)
                             .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
                             .setContentTitle("Sampurna Sewa")
                             .setContentText("Your Booking has been confirmed")
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setPriority(NotificationCompat.PRIORITY_LOW)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();
                     notificationManagerCompact.notify(1, notification);
-                }else {
+                } else {
                     Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -99,18 +103,48 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-        Call<List<User2>> userCall = api.getuser(userid);
-        userCall.enqueue(new Callback<List<User2>>() {
+        completed="2";
+        confirmation="1";
+        Call<List<Booking>> listCall1=api.getcompleted(userid,confirmation,completed);
+        listCall1.enqueue(new Callback<List<Booking>>() {
             @Override
-            public void onResponse(Call<List<User2>> call, Response<List<User2>> response) {
-                List<User2> list = response.body();
-                for (User2 user2 : list) {
-                    name = user2.getName();
-                    profileImageName = user2.getImagename();
-                    tvUN = user2.getUsername();
-                    tvUE = user2.getEmail();
-                    tvUp = user2.getPhone();
-                    tvUA = user2.getAddress();
+            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                List<Booking> bookingList=response.body();
+                for (Booking booking :bookingList){
+                    number2 += 1;
+                }
+        if (Integer.parseInt(sharedNumber2)<number){
+            Notification notification2 = new NotificationCompat.Builder(getContext(), CreateChannel.CHANNEL_1)
+                    .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
+                    .setContentTitle("Sampurna Sewa")
+                    .setContentText("Your Booking has been Rejected")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .build();
+            notificationManagerCompact.notify(2, notification2);
+        } else {
+            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+        }
+            }
+
+            @Override
+            public void onFailure(Call<List<Booking>> call, Throwable t) {
+
+            }
+        });
+
+        Call<List<User>> userCall = api.getuser(userid);
+        userCall.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                List<User> list = response.body();
+                for (User user : list) {
+                    name = user.getName();
+                    profileImageName = user.getImagename();
+                    tvUN = user.getUsername();
+                    tvUE = user.getEmail();
+                    tvUp = user.getPhone();
+                    tvUA = user.getAddress();
                     tvUName.setText(name);
                     tvUuserName.setText(tvUN);
                     tvUEmail.setText(tvUE);
@@ -129,7 +163,7 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<User2>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
             }
         });
 

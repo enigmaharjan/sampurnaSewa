@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private TextView jobtype, jtime, jdate, problem;
-    private Button btnbook;
+    private TextView btnbook;
     NotificationManagerCompat notificationManagerCompact;
 
     String jobname, uid;
@@ -57,6 +57,22 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
         CreateChannel channel = new CreateChannel(Book.this);
         channel.createChannel();
 
+
+
+        jdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Book.this, Book.this, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()+1000 );
+                datePickerDialog.show();
+            }
+        });
         jtime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,23 +87,7 @@ public class Book extends AppCompatActivity implements DatePickerDialog.OnDateSe
                         jtime.setText(hourOfDay + ":" + minute);
                     }
                 }, hour, minute, false);
-
                 timePickerDialog.show();
-            }
-        });
-
-        jdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        Book.this, Book.this, year, month, day);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()+1000 );
-                datePickerDialog.show();
             }
         });
         btnbook.setOnClickListener(new View.OnClickListener() {

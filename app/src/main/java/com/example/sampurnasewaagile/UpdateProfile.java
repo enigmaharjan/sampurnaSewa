@@ -73,12 +73,12 @@ public class UpdateProfile extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
         final String userid = sharedPreferences.getString("userid", "");
         Api api = Url.getInstance().create(Api.class);
-        Call<List<User2>> userCall = api.getuser(userid);
-        userCall.enqueue(new Callback<List<User2>>() {
+        Call<List<User>> userCall = api.getuser(userid);
+        userCall.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<User2>> call, Response<List<User2>> response) {
-                List<User2> list = response.body();
-                for (User2 user2 : list) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                List<User> list = response.body();
+                for (User user2 : list) {
                     name = user2.getName();
                     username = user2.getUsername();
                     email = user2.getEmail();
@@ -109,7 +109,7 @@ public class UpdateProfile extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<User2>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
                 Toast.makeText(UpdateProfile.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }

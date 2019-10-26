@@ -13,6 +13,9 @@ import android.provider.Browser;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentContainer;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.text.TextUtils;
@@ -47,7 +50,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class RegisterPage extends Fragment {
     private EditText regemail, regpassword, regfullname, regusername, regphoneno, regaddress, regconfpassword;
-    private TextView btnSignIn, btnSignUp;
+    private TextView btnSignIn, btnSignUp,tosign_in_button;
     private ImageView regImage;
     private String imagePath, imgname;
 
@@ -67,8 +70,15 @@ public class RegisterPage extends Fragment {
         regusername = view.findViewById(R.id.regusernamelog);
         regpassword = view.findViewById(R.id.regpasswordlog);
         regconfpassword = view.findViewById(R.id.regconfpasswordlog);
-        btnSignIn = view.findViewById(R.id.sign_in_button);
+        btnSignIn = view.findViewById(R.id.tosign_in_button);
         regImage = view.findViewById(R.id.profileImage);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), ViewPagerActivity.class);
+                startActivity(intent);
+            }
+        });
         checkPermission();
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
