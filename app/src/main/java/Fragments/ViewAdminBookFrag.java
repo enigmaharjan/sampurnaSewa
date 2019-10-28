@@ -3,6 +3,7 @@ package Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,6 +44,14 @@ public class ViewAdminBookFrag extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_view_book, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewallbook);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh2);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showallBook();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
 
         showallBook();

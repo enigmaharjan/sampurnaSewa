@@ -1,5 +1,6 @@
 package com.example.sampurnasewaagile;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +28,14 @@ public class ShowAllBookAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_book);
         recyclerView = findViewById(R.id.recyclerViewallbooking);
+        final SwipeRefreshLayout pullToRefresh = findViewById(R.id.pullToRefresh6);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showallBooking();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             jobname=(bundle.getString("jobname"));

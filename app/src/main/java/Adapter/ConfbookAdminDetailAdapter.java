@@ -38,6 +38,7 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
     Context mcontext;
     List<Booking> bookList;
     String username;
+
     public ConfbookAdminDetailAdapter(Context mcontext, List<Booking> bookList) {
         this.mcontext = mcontext;
         this.bookList = bookList;
@@ -63,7 +64,7 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 List<User> list = response.body();
                 for (User user : list) {
-                    username= user.getUsername();
+                    username = user.getUsername();
                     detailsViewHolder.tvjuser.setText(username);
 
                 }
@@ -74,87 +75,86 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
 
             }
         });
-            detailsViewHolder.tvjobName.setText(booking.getJobname());
-            detailsViewHolder.tvjdate.setText(booking.getJobdate());
-            detailsViewHolder.tvjtime.setText(booking.getJobtime());
-            detailsViewHolder.tvjprob.setText(booking.getJobproblem());
-            detailsViewHolder.tvjuser.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Api api = Url.getInstance().create(Api.class);
-                    String userid = booking.getUserid();
-                    Call<List<User>> userCall = api.getuser(userid);
-                    userCall.enqueue(new Callback<List<User>>() {
-                        @Override
-                        public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                            List<User> list =response.body();
-                            for(User user2: list){
-                                String name=user2.getName();
-                                String username=user2.getUsername();
-                                String email=user2.getEmail();
-                                String phone=user2.getPhone();
-                                String address=user2.getAddress();
-                                String image=user2.getImagename();
-                                Toast.makeText(mcontext, ""+image, Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(mcontext, ViewProfile.class);
-                                intent.putExtra("image",image);
-                                intent.putExtra("name",name);
-                                intent.putExtra("username",username);
-                                intent.putExtra("email",email);
-                                intent.putExtra("phone",phone);
-                                intent.putExtra("address",address);
-                                mcontext.startActivity(intent);
-                            }
+        detailsViewHolder.tvjobName.setText(booking.getJobname());
+        detailsViewHolder.tvjdate.setText(booking.getJobdate());
+        detailsViewHolder.tvjtime.setText(booking.getJobtime());
+        detailsViewHolder.tvjprob.setText(booking.getJobproblem());
+        detailsViewHolder.tvjuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Api api = Url.getInstance().create(Api.class);
+                String userid = booking.getUserid();
+                Call<List<User>> userCall = api.getuser(userid);
+                userCall.enqueue(new Callback<List<User>>() {
+                    @Override
+                    public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                        List<User> list = response.body();
+                        for (User user2 : list) {
+                            String name = user2.getName();
+                            String username = user2.getUsername();
+                            String email = user2.getEmail();
+                            String phone = user2.getPhone();
+                            String address = user2.getAddress();
+                            String image = user2.getImagename();
+                            Toast.makeText(mcontext, "" + image, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(mcontext, ViewProfile.class);
+                            intent.putExtra("image", image);
+                            intent.putExtra("name", name);
+                            intent.putExtra("username", username);
+                            intent.putExtra("email", email);
+                            intent.putExtra("phone", phone);
+                            intent.putExtra("address", address);
+                            mcontext.startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<User>> call, Throwable t) {
+                        Toast.makeText(mcontext, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+            }
+        });
+        final String bid = booking.getBookid();
+        detailsViewHolder.btncompleted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Api api = Url.getInstance().create(Api.class);
+                String bookid = bid;
+                String completed = "1";
+                String feedback = "null";
+                Booking2 booking2 = new Booking2(bookid, completed, feedback);
+                Call<BookingResponse> listCall = api.completedbook(booking2);
+                listCall.enqueue(new Callback<BookingResponse>() {
+                    @Override
+                    public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
+                        BookingResponse bookingResponse = response.body();
+                        if (bookingResponse.getMessage().equals("Success")) {
+                            Toast.makeText(mcontext, "Completed", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                         }
 
-                        @Override
-                        public void onFailure(Call<List<User>> call, Throwable t) {
-                            Toast.makeText(mcontext, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
-                        }
-                    });
-
-                }
-            });
-            final String bid = booking.getBookid();
-            detailsViewHolder.btncompleted.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Api api = Url.getInstance().create(Api.class);
-                    String bookid = bid;
-                    String completed = "1";
-                    String feedback="null";
-                    Booking2 booking2 = new Booking2(bookid, completed, feedback);
-                    Call<BookingResponse> listCall = api.completedbook(booking2);
-                    listCall.enqueue(new Callback<BookingResponse>() {
-                        @Override
-                        public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
-                            BookingResponse bookingResponse = response.body();
-                            if (bookingResponse.getMessage().equals("Success")) {
-                                Toast.makeText(mcontext, "Completed", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(mcontext, AdminActivity.class);
-                                mcontext.startActivity(intent);
-                            } else {
-                                Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<BookingResponse> call, Throwable t) {
-                            Toast.makeText(mcontext, "aa" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            });
-        }
+                    @Override
+                    public void onFailure(Call<BookingResponse> call, Throwable t) {
+                        Toast.makeText(mcontext, "aa" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
-        return bookList.size();    }
+        return bookList.size();
+    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvjobName, tvjdate,tvjtime,tvjprob,tvjuser;
+        TextView tvjobName, tvjdate, tvjtime, tvjprob, tvjuser;
         Button btncompleted;
 
         public DetailsViewHolder(@NonNull View itemView) {
@@ -163,8 +163,8 @@ public class ConfbookAdminDetailAdapter extends RecyclerView.Adapter<ConfbookAdm
             tvjdate = itemView.findViewById(R.id.tvalljdate);
             tvjtime = itemView.findViewById(R.id.tvalljtime);
             tvjprob = itemView.findViewById(R.id.tvalljprob);
-            tvjuser=itemView.findViewById(R.id.tvallUserid);
-            btncompleted=itemView.findViewById(R.id.btncompleted);
+            tvjuser = itemView.findViewById(R.id.tvallUserid);
+            btncompleted = itemView.findViewById(R.id.btncompleted);
         }
 
     }

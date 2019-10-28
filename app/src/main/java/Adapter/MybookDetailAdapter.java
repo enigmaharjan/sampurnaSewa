@@ -68,8 +68,6 @@ public class MybookDetailAdapter extends RecyclerView.Adapter<MybookDetailAdapte
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(mcontext, "deleted", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(mcontext, UserActivity.class);
-                        mcontext.startActivity(intent);
                     }
 
                     @Override

@@ -22,7 +22,7 @@
                 android:id="@+id/myprofile"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/cardview_dark_background"
+                android:background="@drawable/drawer"
                 android:orientation="horizontal"
                 android:paddingLeft="16dp"
                 android:paddingTop="8dp"
@@ -41,7 +41,9 @@
                     android:layout_gravity="center_vertical"
                     android:text="Profile"
                     android:textColor="#fff"
-                    android:textSize="16sp" />
+                    android:textSize="20sp"
+                    android:focusable="true"
+                    android:selectAllOnFocus="true"/>
             </LinearLayout>
 
             <RelativeLayout

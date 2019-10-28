@@ -37,11 +37,12 @@ public class ConfJobDetailAdapteradmin extends RecyclerView.Adapter<ConfJobDetai
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.jobadmin, viewGroup, false);
-        return new DetailsViewHolder(view);    }
+        return new DetailsViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull DetailsViewHolder detailsViewHolder, int i) {
-        final Job job=jobList.get(i);
+        final Job job = jobList.get(i);
 
         detailsViewHolder.tvjname.setText(job.getJobname());
         String image = job.getJobimage();
@@ -57,14 +58,15 @@ public class ConfJobDetailAdapteradmin extends RecyclerView.Adapter<ConfJobDetai
         detailsViewHolder.tvjname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mcontext, ShowAdminConfBook.class);
+                Intent intent = new Intent(mcontext, ShowAdminConfBook.class);
                 intent.putExtra("jobname", job.getJobname());
                 mcontext.startActivity(intent);
 
             }
         });
     }
-    private void StrictMode(){
+
+    private void StrictMode() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
@@ -72,7 +74,8 @@ public class ConfJobDetailAdapteradmin extends RecyclerView.Adapter<ConfJobDetai
 
     @Override
     public int getItemCount() {
-        return jobList.size();    }
+        return jobList.size();
+    }
 
     public class DetailsViewHolder extends RecyclerView.ViewHolder {
         ImageView imgItem;
@@ -80,7 +83,7 @@ public class ConfJobDetailAdapteradmin extends RecyclerView.Adapter<ConfJobDetai
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgItem=itemView.findViewById(R.id.imgjob);
+            imgItem = itemView.findViewById(R.id.imgjob);
             tvjname = itemView.findViewById(R.id.tvjNameadmin);
         }
 

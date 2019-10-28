@@ -43,7 +43,7 @@ import static Url.Url.BASE_URL;
 
 public class UpdateJob extends AppCompatActivity {
     private EditText jname, jdetail, mincharge;
-    private TextView upt_job;
+    private TextView upt_job,del_job;
     private Spinner avail;
     private String joname, jodetail, mcharge, jimg, imagePath,joid,img;
     private ImageView ujobImage;
@@ -58,6 +58,9 @@ public class UpdateJob extends AppCompatActivity {
         avail = findViewById(R.id.uavail);
         upt_job = findViewById(R.id.upt_job);
         ujobImage=findViewById(R.id.ujobImage);
+        del_job=findViewById(R.id.del_job);
+
+
         checkPermission();
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -68,6 +71,28 @@ public class UpdateJob extends AppCompatActivity {
             jimg = (bundle.getString("img"));
 
         }
+        del_job.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Api api= Url.getInstance().create(Api.class);
+                Job job=new Job(joid);
+                String jobid=joid;
+                Call<Void> call=api.deletejob(job);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(UpdateJob.this, "deleted", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(UpdateJob.this, AdminActivity.class);
+                        UpdateJob.this.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(UpdateJob.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
         jname.setText(joname);
         jdetail.setText(jodetail);
         mincharge.setText(mcharge);

@@ -3,6 +3,7 @@ package Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,7 +32,6 @@ public class ViewAdminConfBookFrag extends Fragment {
     private RecyclerView recyclerView;
 
 
-
     public ViewAdminConfBookFrag() {
         // Required empty public constructor
     }
@@ -41,35 +41,41 @@ public class ViewAdminConfBookFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view= inflater.inflate(R.layout.fragment_view_book, container, false);
+        final View view = inflater.inflate(R.layout.fragment_view_book, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewallbook);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh2);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showallBook();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
 
         showallBook();
-
-
         return view;
+    }
 
-}
-    private void showallBook(){
+    private void showallBook() {
 
-        Retrofit retrofit= Url.getInstance();
+        Retrofit retrofit = Url.getInstance();
         Api api = retrofit.create(Api.class);
 
-        Call<List<Job>> listCall= api.getJobs();
+        Call<List<Job>> listCall = api.getJobs();
         listCall.enqueue(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
-                Toast.makeText(getContext(), "load Confirmed Book", Toast.LENGTH_SHORT).show();
                 List<Job> booking = response.body();
                 ConfJobDetailAdapteradmin allbookDetailAdapter = new ConfJobDetailAdapteradmin(getActivity(), booking);
                 recyclerView.setAdapter(allbookDetailAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
+
             @Override
             public void onFailure(Call<List<Job>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed"+t, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Failed" + t, Toast.LENGTH_LONG).show();
 
             }
         });

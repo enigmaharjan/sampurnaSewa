@@ -96,19 +96,6 @@ public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdmin
                             BookingResponse bookingResponse = response.body();
                             if (bookingResponse.getMessage().equals("Success")) {
                                 Toast.makeText(mcontext, "Confirmed", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(mcontext, AdminActivity.class);
-                                mcontext.startActivity(intent);
-                                // Builds your notification
-//                                Notification notification = new NotificationCompat.Builder(mcontext, CreateChannel.CHANNEL_1)
-//                                        .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
-//                                        .setContentTitle("Sampurna Sewa")
-//                                        .setContentText("Your Booking has been confirmed")
-//                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-//                                        .build();
-//                                notificationManagerCompact.notify(1, notification);
-
-
                             } else {
                                 Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                             }
@@ -138,8 +125,6 @@ public class AllbookAdminDetailAdapter extends RecyclerView.Adapter<AllbookAdmin
                         BookingResponse bookingResponse = response.body();
                         if (bookingResponse.getMessage().equals("Success")) {
                             Toast.makeText(mcontext, "Rejected", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(mcontext, AdminActivity.class);
-                            mcontext.startActivity(intent);
                         } else {
                             Toast.makeText(mcontext, "lol", Toast.LENGTH_SHORT).show();
                         }

@@ -94,5 +94,9 @@
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:minWidth">250dp</item>
     </style>
+    <style name="HiddenTitleTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 
 </resources>

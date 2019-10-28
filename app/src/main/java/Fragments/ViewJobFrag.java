@@ -3,6 +3,7 @@ package Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,7 +43,15 @@ public class ViewJobFrag extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_view_job, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewjob);
-        showallBook();
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                               @Override
+                                               public void onRefresh() {
+                                                   showallBook();
+                                                   pullToRefresh.setRefreshing(false);
+                                               }
+                                           });
+                showallBook();
         return view;
     }
 

@@ -91,6 +91,9 @@ public interface Api {
     @HTTP(method = "DELETE", path = "api/v1/booking/{bookid}", hasBody = true)
     Call<Void> deletebook(@Path("bookid") String bookid);
 
+    @HTTP(method = "DELETE", path = "/api/v1/job", hasBody = true)
+    Call<Void> deletejob(@Body Job job);
+
     @Multipart
     @POST("upload")
     Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);

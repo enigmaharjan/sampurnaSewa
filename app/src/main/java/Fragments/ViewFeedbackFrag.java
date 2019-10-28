@@ -3,6 +3,7 @@ package Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,6 +45,14 @@ public class ViewFeedbackFrag extends Fragment {
         // Inflate the layout for this fragment
         final View view= inflater.inflate(R.layout.fragment_view_feedback, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewfeedback);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh3);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showallFeed();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
         showallFeed();
         return view;
     }
@@ -55,7 +64,6 @@ public class ViewFeedbackFrag extends Fragment {
         listCall.enqueue(new Callback<List<Booking2>>() {
             @Override
             public void onResponse(Call<List<Booking2>> call, Response<List<Booking2>> response) {
-                Toast.makeText(getContext(), "load Feedback", Toast.LENGTH_SHORT).show();
                 List<Booking2> feedbacks = response.body();
                 FeedbackAdapter feedbackAdapter = new FeedbackAdapter(getActivity(), feedbacks);
                 recyclerView.setAdapter(feedbackAdapter);

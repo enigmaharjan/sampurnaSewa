@@ -1,6 +1,7 @@
 package com.example.sampurnasewaagile;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,34 +28,44 @@ public class ShowCompBookAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_book);
         recyclerView = findViewById(R.id.recyclerViewallbooking);
+        final SwipeRefreshLayout pullToRefresh = findViewById(R.id.pullToRefresh6);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showallBooking();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
+
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            jobname=(bundle.getString("jobname"));
+            jobname = (bundle.getString("jobname"));
         }
         showallBooking();
     }
 
 
-        private void showallBooking(){
+    private void showallBooking() {
 
-            Retrofit retrofit= Url.getInstance();
-            Api api = retrofit.create(Api.class);
-            String confirmation="1";
-            String completed="1";
-            Call<List<Booking>> listCall= api.getallbooking(jobname,confirmation,completed);
-            listCall.enqueue(new Callback<List<Booking>>() {
-                @Override
-                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    List<Booking> booking = response.body();
-                    CompbookAdminDetailAdapter compbookAdminDetailAdapter = new CompbookAdminDetailAdapter(ShowCompBookAdmin.this, booking);
-                    recyclerView.setAdapter(compbookAdminDetailAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(ShowCompBookAdmin.this));
-                }
-                @Override
-                public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    Toast.makeText(ShowCompBookAdmin.this, "Failed"+t, Toast.LENGTH_LONG).show();
+        Retrofit retrofit = Url.getInstance();
+        Api api = retrofit.create(Api.class);
+        String confirmation = "1";
+        String completed = "1";
+        Call<List<Booking>> listCall = api.getallbooking(jobname, confirmation, completed);
+        listCall.enqueue(new Callback<List<Booking>>() {
+            @Override
+            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                List<Booking> booking = response.body();
+                CompbookAdminDetailAdapter compbookAdminDetailAdapter = new CompbookAdminDetailAdapter(ShowCompBookAdmin.this, booking);
+                recyclerView.setAdapter(compbookAdminDetailAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(ShowCompBookAdmin.this));
+            }
 
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<List<Booking>> call, Throwable t) {
+                Toast.makeText(ShowCompBookAdmin.this, "Failed" + t, Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
+}

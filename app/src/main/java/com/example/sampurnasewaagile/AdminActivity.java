@@ -25,18 +25,16 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     private TextView tvTitle;
     private NavigationView nav;
     int backButtonCount;
+
     @Override
     public void onBackPressed() {
-        if(backButtonCount >= 1)
-        {
+        if (backButtonCount >= 1) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
             backButtonCount++;
         }
@@ -62,7 +60,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         nav.findViewById(R.id.viewLogout).setOnClickListener(this);
 
 
-        showFragment(new ViewJobFrag(), "All Jobs");
+        showFragment(new ViewAdminBookFrag(), "Book Requests");
     }
 
     public void openDrawer(View view) {
