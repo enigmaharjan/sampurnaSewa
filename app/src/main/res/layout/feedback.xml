@@ -18,12 +18,11 @@
         android:id="@+id/linname"
         style="@style/textStyle"
         android:maxLines="2"
-        android:textSize="20sp"
         android:orientation="horizontal">
 
     <TextView
         android:textStyle="bold"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000"
         android:text="Jobname:"
         android:layout_height="wrap_content"
@@ -33,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="#000"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_marginStart="20dp"
         android:hint="Jobname"/>
     </LinearLayout>
@@ -42,15 +41,14 @@
         android:id="@+id/linuser"
         style="@style/textStyle"
         android:maxLines="2"
-        android:textSize="20sp"
         android:layout_below="@+id/linname"
         android:orientation="horizontal">
 
         <TextView
             android:textStyle="bold"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
-            android:text="User:"
+            android:text="Username:"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
         <TextView
@@ -58,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textColor="#000"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_marginStart="20dp"
             android:hint="Username"/>
     </LinearLayout>
@@ -72,19 +70,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:text="Feedback:"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-        <TextView
             android:id="@+id/tvfeed"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:layout_marginStart="20dp"
             android:hint="Feedback"/>
     </LinearLayout>
 </RelativeLayout>
