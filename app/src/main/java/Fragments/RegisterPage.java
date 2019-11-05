@@ -84,7 +84,17 @@ public class RegisterPage extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!isEmpty()) {
+                    login();
+                }
+            }
+            private void login() {
+                String pass1 = regpassword.getText().toString();
+                String pass2 = regpassword.getText().toString();
+                if (pass1.equals(pass2)) {
                     addUser();
+                }
+                else {
+                    Toast.makeText(getContext(), "Password and confirm password doesn't matched", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -114,6 +124,7 @@ public class RegisterPage extends Fragment {
         else if(resultCode != RESULT_OK){
             return;
         }
+
         Uri uri = data.getData();
         imagePath = getRealPathFromUri(uri);
         previewImage(imagePath);

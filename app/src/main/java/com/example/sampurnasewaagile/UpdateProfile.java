@@ -46,7 +46,8 @@ public class UpdateProfile extends AppCompatActivity {
     private EditText uptname, uptuname, uptemail, uptpassword, uptaddress, uptphone;
     private Button btnedit, btncancel;
     private ImageView upprofileImage;
-    String name, username, email, password, address, phone, imagePath, imgname,img;
+    //    String name, username, email, password, address, phone,
+    String imagePath, imgname,img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +80,12 @@ public class UpdateProfile extends AppCompatActivity {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 List<User> list = response.body();
                 for (User user2 : list) {
-                    name = user2.getName();
-                    username = user2.getUsername();
-                    email = user2.getEmail();
-                    password = user2.getEmail();
-                    phone = user2.getPhone();
-                    address = user2.getAddress();
+                    String name = user2.getName();
+                    String username = user2.getUsername();
+                    String email = user2.getEmail();
+                    String password = user2.getPassword();
+                    String phone = user2.getPhone();
+                    String address = user2.getAddress();
                     uptname.setText(name);
                     uptuname.setText(username);
                     uptemail.setText(email);
@@ -185,7 +186,7 @@ public class UpdateProfile extends AppCompatActivity {
             Response<ImageResponse> imageResponseResponse = call.execute();
             img = imageResponseResponse.body().getFilename();
         } catch (IOException e) {
-            Toast.makeText(UpdateProfile.this, "Error " + e , Toast.LENGTH_SHORT).show();
+//            Toast.makeText(UpdateProfile.this, "Error " + e , Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
