@@ -17,7 +17,7 @@ public class RegisterTest {
 
     @Test
     public void is_email_empty() {
-        String email="";
+        String email="suman@gmail.com";
         assertEquals(true, validate.isEmpty(email));
     }
     @Test
@@ -28,7 +28,7 @@ public class RegisterTest {
 
     @Test
     public void is_phone_empty() {
-        String number="";
+        String number="98437889625";
         assertEquals(true, validate.isEmpty(number));
     }
     @Test
