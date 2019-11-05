@@ -1,4 +1,4 @@
-package np.com.tourguide.activities.TestClass;
+package com.example.sampurnasewaagile;
 
 public class Validation {
     public boolean isEmpty(String text){
