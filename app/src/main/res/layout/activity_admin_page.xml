@@ -1,101 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="18dp"
-    android:paddingRight="18dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    android:background="@drawable/ic_background">
+    android:layout_marginTop="10dp"
+    android:fitsSystemWindows="true">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:theme="@style/AppTheme"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        android:layout_marginBottom="25dp"
+        android:scaleY="2" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/bold"
+                android:includeFontPadding="false"
+                android:text="@string/log_in_to_your_account_admin"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
 
             <!-- Logo Image-->
-            <ImageView
-                android:layout_width="match_parent"
+            <!--<ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:padding="16dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/logo"
-                />
-            <EditText
-                android:id="@+id/etemailLoginadmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:background="@android:color/transparent"
-                android:drawablePadding="8dp"
-                android:padding="8dp"
-                android:hint="Email"
-                android:textColorHint="#fff"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_person"
-                android:layout_marginTop="70dp"
-                />
+                android:src="@drawable/logo" />-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db"
-                />
-            <EditText
-                android:id="@+id/etPasswordLoginadmin"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:drawablePadding="12dp"
-                android:padding="8dp"
-                android:hint="Password"
-                android:textColorHint="#fff"
-                android:maxLines="1"
-                android:background="@android:color/transparent"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/shape_corner_unfill"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
+
+                <EditText
+                    android:id="@+id/etemailLoginadmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorTransparent"
+                    android:fontFamily="@font/normal"
+                    android:gravity="center_vertical"
+                    android:hint="@string/email"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="admin@admin.com"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_lock"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db"/>
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_corner_unfill"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp">
 
-            <Button
-                android:id="@+id/btnLoginAdmin"
+                <EditText
+                    android:id="@+id/etPasswordLoginadmin"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:background="@color/colorTransparent"
+                    android:fontFamily="@font/normal"
+                    android:gravity="center_vertical"
+                    android:hint="@string/password"
+                    android:includeFontPadding="false"
+                    android:text="admin"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_button"
-                android:text="Log in as admin"
-                android:textColor="#00695C"
-                android:textAllCaps="false"
-                android:padding="16dp"
-                android:clickable="true"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:layout_marginTop="24dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_button_fill"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forget your Password? "
-                android:layout_gravity="center"
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="#fff"
-                android:padding="16dp"
-                android:clickable="true"
-                android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:id="@+id/btnLoginAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorTransparent"
+                    android:fontFamily="@font/normal"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="@string/login_as_admin"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

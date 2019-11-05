@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:contentPadding="8dp"
+    app:cardBackgroundColor="@color/colorBackground">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/aaa">
+
+        <TextView
+            android:id="@+id/tvalljobName"
+            style="@style/textStyle"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:textColor="@color/colorPrimary"
+            android:text="Job Type"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lindec"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
+            android:layout_below="@+id/aaa">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Date :" />
+
+            <TextView
+                android:id="@+id/tvalljdate"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Date" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linprice"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/lindec">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Time:" />
+
+            <TextView
+                android:id="@+id/tvalljtime"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linprob"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/linprice">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Problem:" />
+            <TextView
+                android:id="@+id/tvalljprob"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="Problem" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linuserid"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/lindec"
+            android:layout_below="@+id/linprob">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:text="Booked by:" />
+            <TextView
+                android:id="@+id/tvallUserid"
+                style="@style/textStyle"
+                android:maxLines="2"
+                android:textSize="20sp"
+                android:hint="username" />
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btnconf"
+        android:text="Confirm"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linuserid">
+    </Button>
+        <Button
+            android:id="@+id/btnrejt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnconf"
+            android:layout_below="@+id/linuserid"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Reject"
+            android:textAllCaps="false"></Button>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

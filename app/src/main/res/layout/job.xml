@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginRight="8dp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/jobimg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_person"/>
+
+        <TextView
+            android:id="@+id/tvjName"
+            style="@style/textStyle"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="#000AFF"
+            android:layout_alignTop="@+id/jobimg"
+            android:layout_toRightOf="@+id/jobimg"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/jobimg"
+            android:hint="Job name"/>
+
+    <LinearLayout
+        android:id="@+id/lindec"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/tvjName"
+        android:layout_below="@+id/tvjName"
+        android:layout_toEndOf="@+id/jobimg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Detail:" />
+
+    <TextView
+            android:id="@+id/tvjdesc"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:hint="Job detail" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linprice"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/lindec"
+        android:layout_toEndOf="@+id/jobimg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:paddingRight="10dp"
+        android:text="Min Charge:" />
+        <TextView
+            android:id="@+id/tvjprice"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjName"
+            android:layout_below="@+id/lindec"
+            android:layout_toEndOf="@+id/jobimg"
+            android:hint="Charge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linav"
+        style="@style/textStyle"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/lindec"
+        android:layout_below="@+id/linprice"
+        android:layout_toEndOf="@+id/jobimg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="Available:" />
+        <TextView
+            android:id="@+id/tvjavail"
+            style="@style/textStyle"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/tvjName"
+            android:layout_toEndOf="@+id/jobimg"
+            android:hint="Yes/No" />
+    </LinearLayout>
+</RelativeLayout>

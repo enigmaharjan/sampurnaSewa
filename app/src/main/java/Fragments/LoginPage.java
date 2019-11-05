@@ -1,6 +1,7 @@
 package Fragments;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,15 +9,16 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampurnasewaagile.UserActivity;
 import com.example.sampurnasewaagile.R;
 
-import Api.UserApi;
+import Api.Api;
 import Model.LoginResponse;
-import Model.User;
+import Model.User2;
 import Url.Url;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,8 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class LoginPage extends Fragment {
     private EditText etemailLogin,etPasswordLogin;
-    private Button btnLogin;
-    private String a;
+    private TextView btnLogin;
 
 
     @Override
@@ -53,10 +54,10 @@ public class LoginPage extends Fragment {
 
         final String email = etemailLogin.getText().toString();
         final String password = etPasswordLogin.getText().toString();
-        UserApi userApi = Url.getInstance().create(UserApi.class);
-        final User user = new User(email, password);
+        Api api = Url.getInstance().create(Api.class);
+        final User2 user2 = new User2(email, password);
 
-        Call<LoginResponse> call = userApi.getResponse(user);
+        Call<LoginResponse> call = api.getResponse(user2);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -66,10 +67,10 @@ public class LoginPage extends Fragment {
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("User", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("userid", id);
-                    editor.commit();
+                    editor.apply();
                     Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(getActivity(), Dashboard.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), UserActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "Invalid id or pw", Toast.LENGTH_SHORT).show();
                 }
