@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sampurnasewaagile.UserActivity;
 import com.example.sampurnasewaagile.R;
+import com.example.sampurnasewaagile.UserActivity;
 
 import Api.Api;
 import Model.LoginResponse;
@@ -54,7 +54,7 @@ public class LoginPage extends Fragment {
 
         final String email = etemailLogin.getText().toString();
         final String password = etPasswordLogin.getText().toString();
-        Api api = Url.getInstance().create(Api.class);
+        final Api api = Url.getInstance().create(Api.class);
         final User2 user2 = new User2(email, password);
 
         Call<LoginResponse> call = api.getResponse(user2);
@@ -68,7 +68,7 @@ public class LoginPage extends Fragment {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("userid", id);
                     editor.apply();
-                    Toast.makeText(getContext(), "Welcome", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Welcome " , Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), UserActivity.class);
                     startActivity(intent);
                 } else {

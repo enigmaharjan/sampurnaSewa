@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,13 +84,13 @@ public class UpdateProfile extends AppCompatActivity {
                     String name = user2.getName();
                     String username = user2.getUsername();
                     String email = user2.getEmail();
-                    String password = user2.getPassword();
+//                    String password = user2.getPassword();
                     String phone = user2.getPhone();
                     String address = user2.getAddress();
                     uptname.setText(name);
                     uptuname.setText(username);
                     uptemail.setText(email);
-                    uptpassword.setText(password);
+                    uptpassword.setText("");
                     uptaddress.setText(address);
                     uptphone.setText(phone);
                     imgname = user2.getImagename();
@@ -126,11 +127,14 @@ public class UpdateProfile extends AppCompatActivity {
         btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update();
+                if (!isEmpty()) {
+                    update();
+                }
             }
         });
 
     }
+
     private void BrowseImage() {
         Intent i = new Intent(Intent.ACTION_PICK);
         i.setType("image/*");
@@ -242,7 +246,17 @@ public class UpdateProfile extends AppCompatActivity {
                 Toast.makeText(UpdateProfile.this, "failed to update", Toast.LENGTH_SHORT).show();
 
             }
+
         });
+
+    }
+
+    private boolean isEmpty() {
+        if (TextUtils.isEmpty((uptpassword.getText().toString()))) {
+            uptpassword.setError("Please enter Name");
+            uptpassword.requestFocus();
+            return true;
+        } else return false;
     }
 
 }

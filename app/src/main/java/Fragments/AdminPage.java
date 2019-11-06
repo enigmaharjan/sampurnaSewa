@@ -83,8 +83,7 @@ public class AdminPage extends Fragment {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getContext(), "sorry "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

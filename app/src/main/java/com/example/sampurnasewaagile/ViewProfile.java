@@ -9,14 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
-import Model.User2;
-import retrofit2.Call;
 
 import static Url.Url.BASE_URL;
 

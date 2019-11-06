@@ -14,15 +14,11 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sampurnasewaagile.R;
 import com.example.sampurnasewaagile.UpdateProfile;
-import com.example.sampurnasewaagile.ViewPagerActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,12 +26,9 @@ import java.util.List;
 
 import Api.Api;
 import Model.Booking;
-import Model.RegisterResponse;
 import Model.User;
-import Model.User2;
 import Url.Url;
 import channel.CreateChannel;
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +43,7 @@ public class ProfileFragment extends Fragment {
     int number,number2;
     NotificationManagerCompat notificationManagerCompact;
     String confirmation;
-    String completed;
+    String completed,lol;
 
 
     @Nullable
@@ -94,7 +87,7 @@ public class ProfileFragment extends Fragment {
                             .build();
                     notificationManagerCompact.notify(1, notification);
                 } else {
-                    Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                    lol="lol";
                 }
             }
 
@@ -123,7 +116,7 @@ public class ProfileFragment extends Fragment {
                     .build();
             notificationManagerCompact.notify(2, notification2);
         } else {
-            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+            lol="lol";
         }
             }
 

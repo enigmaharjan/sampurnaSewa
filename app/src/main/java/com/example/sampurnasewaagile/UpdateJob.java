@@ -176,7 +176,7 @@ public class UpdateJob extends AppCompatActivity {
                 Response<ImageResponse> imageResponseResponse = call.execute();
                 img = imageResponseResponse.body().getFilename();
             } catch (IOException e) {
-                Toast.makeText(UpdateJob.this, "Error " + e , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(UpdateJob.this, "Error " + e , Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }
@@ -217,7 +217,6 @@ public class UpdateJob extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(UpdateJob.this, "failed to update", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
